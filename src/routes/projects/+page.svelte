@@ -4,7 +4,7 @@
 <style>
     header{
         position:fixed;
-        top:0;;
+        top:0;
         width:100vw;
         max-width: 100vw;
         height:6rem;
@@ -56,6 +56,14 @@
         font-size: 20px;
         transition: color 0.55s;
     }
+    .nav-image {
+        position: relative;
+        left:65%;
+        margin-left:2px;
+        display:block;
+        position:relative;
+        gap:0.5rem;
+    }
     main{
         top:10px;
         position:fixed;
@@ -76,15 +84,68 @@
         top: 6rem;
         left: 0;
     }
+    .projectFrame {
+        display:block;
+        position:relative;;
+        left:55px;
+        top:28rem;
+        box-sizing: border-box;
+        width:500px;
+        height:350px;
+        margin-top: 2rem;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color:#445b94;
+        border-radius:2rem;
+        text-align:center;
+        padding: 1rem;
+    }
+    .projectDescription {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 18px;
+        line-height: 1.5;
+        color: #F6F6F6;
+    }
+    .projectImage{
+        position:relative;
+        width: 9%; 
+        height: auto; 
+        margin-top: 0.5rem; 
+        left:12%; 
+        top: 65%;
+    }
 </style>
 <header>
     <h1>Adam Ho</h1>
-    <a href="/">Home</a>
-    <a href="/about">About</a>
+    <a href="/" class = "nav-link">Home</a>
+    <a href="/about" class = "nav-link">About Me</a>
     <h2 class = "activeLink">Projects</h2>
-    <a href="/contact" class="nav-link">Contact</a>
+    <a href="https://www.instagram.com/farmerakh/" class="nav-image" target="_blank">
+        <img src="src/lib/linkImages/instagram-white-icon.svg" alt="Instagram" style="width: 30px; height: 30px;">
+    </a>
+    <a href="https://www.linkedin.com/in/adam-ho-a65786202" class="nav-image" target="_blank">
+        <img src="src\lib\linkImages\linkedin-app-white-icon.svg" alt="LinkedIn" style="width: 30px; height: 30px;">
+    </a>
+    <a href="https://github.com/adamakh01" class="nav-image" target="_blank">
+        <img src="src\lib\linkImages\github-mark-white.svg" alt="GitHub" style="width: 30px; height: 30px;">
+    </a>
 </header>
 <main id="main-content">
+    <div class = "projectFrame">
+        <a href = "https://github.com/adamakh01/very-cool-website" class = "projectTitle" target="_blank">Adam Ho's Portfolio</a>
+        <img src = "src/lib/projectImages/AdamHoPortfolio.png" alt = "Adam Ho's Portfolio" class = "projectImage">
+        <p class = "projectDescription" style="font-family: Arial, Helvetica, sans-serif; font-size: 18px; line-height: 1.5;">
+            This is my personal portfolio website where I showcase my projects and skills. It is built using Svelte and CSS, and it is designed to be responsive and user-friendly.
+        </p>
+    </div>
+    <div class = "projectFrame">
+
+    </div>
+    <div class = "projectFrame">
+
+    </div>
+    <div class = "projectFrame">
+
+    </div>
 </main>
 <main>
     <slot />
