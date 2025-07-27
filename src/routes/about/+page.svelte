@@ -85,6 +85,13 @@
         left: 0;
         overflow:fixed;
         height: calc(100vh - 6rem);
+        background:repeating-linear-gradient(
+            135deg,
+            #526fb1,
+            #526fb1 40px,
+            #445b94 40px,
+            #445b94 42px
+        );
     }
     .userPFP {
         position:relative;
