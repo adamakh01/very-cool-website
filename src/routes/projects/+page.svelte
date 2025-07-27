@@ -107,8 +107,6 @@
     }
     .projectImage{
         position:relative;
-        width: 9%; 
-        height: auto; 
         margin-top: 0.5rem; 
         left:12%; 
         top: 65%;
