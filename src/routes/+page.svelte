@@ -274,7 +274,7 @@
         <a href = "https://github.com/adamakh01/ACC-Tablet" class = "nav-link" target="_blank">
             ACC Tablet
         </a>
-        <img class = "projectPic" src = "src\lib\projectImages\ACC Tablet.PNG" alt = "ACC Tablet Project" style="position:fixed; width: 9%; height: auto; margin-top: 0.5rem; left:12%; top: 37rem;">
+        <img class = "projectPic" src = "src\lib\projectImages\ACC Tablet.PNG" alt = "ACC Tablet Project" style="position:fixed; width: 9%; height: auto; margin-top: 0.5rem; left:12%; top: 65%;">
         <p class = "description" style="position:fixed; top: 80%; padding:0.05rem;">
             A silly little project I made while I was bored. Relatively incomplete.
         </p>
