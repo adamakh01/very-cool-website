@@ -64,17 +64,10 @@
         position:relative;
         gap:0.5rem;
     }
-    main{
-        top:10px;
-        position:fixed;
-        padding-top: 4rem;
-        background:#526fb1;
-        color:#F6F6F6;
-    }
     main#main-content {
-        display: flex;
+        display: contents;
         flex-direction: column;
-        justify-content: flex-start;
+        justify-content: center;
         align-items: center;
         padding-top: 0;
         background: #526fb1;
@@ -85,13 +78,15 @@
         left: 0;
     }
     .projectFrame {
-        display:block;
-        position:relative;;
-        left:55px;
-        top:28rem;
+        display:flex;
+        flex-direction:column;
+        justify-content: center;
+        position:relative;
+        left:35%;
+        top:7rem;
         box-sizing: border-box;
         width:500px;
-        height:350px;
+        height:450px;
         margin-top: 2rem;
         font-family: Arial, Helvetica, sans-serif;
         background-color:#445b94;
@@ -105,11 +100,24 @@
         line-height: 1.5;
         color: #F6F6F6;
     }
+    .projectTitle {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 30px;
+        font-weight: bold;
+        color: #d1d3d8;
+        text-decoration: none;
+        transition:color 0.3s;
+    }
+    .projectTitle:hover {
+        color: #F6F6F6;
+        text-decoration: underline;
+        text-decoration-color: #F6F6F6;
+    }
     .projectImage{
-        position:relative;
-        margin-top: 0.5rem; 
-        left:12%; 
-        top: 65%;
+        margin-top: 0.5rem;
+    }
+    .projectDescription{
+        margin-top:3rem;
     }
 </style>
 <header>
@@ -130,19 +138,32 @@
 <main id="main-content">
     <div class = "projectFrame">
         <a href = "https://github.com/adamakh01/very-cool-website" class = "projectTitle" target="_blank">Adam Ho's Portfolio</a>
-        <img src = "src/lib/projectImages/AdamHoPortfolio.png" alt = "Adam Ho's Portfolio" class = "projectImage">
-        <p class = "projectDescription" style="font-family: Arial, Helvetica, sans-serif; font-size: 18px; line-height: 1.5;">
-            This is my personal portfolio website where I showcase my projects and skills. It is built using Svelte and CSS, and it is designed to be responsive and user-friendly.
+        <img src = "src/lib/projectImages/AdamHoPortfolio.png" alt = "Adam Ho's Portfolio" class = "projectImage" style = "position:relative; top:6%; width: 100%; height: auto">
+        <p class = "projectDescription" style="font-family: Arial, Helvetica, sans-serif; font-size: 17px; line-height: 1.5;">
+            Portfolio website showcasing my projects and skills, as well as present my contact info. Built with Sveltekit (HTML, CSS, and JavaScript).
         </p>
     </div>
     <div class = "projectFrame">
-
+        <a href = "https://github.com/adamakh01/Get-Legacy-Apps-Back-for-Windows-11" class = "projectTitle" target="_blank">Legacy Apps for Windows 11</a>
+        <img src = "src/lib/projectImages/LegacyApps.png" alt = "Get Legacy Apps Back for Windows 11" class = "projectImage" style = "position:relative; top:6%; width: 100%; height: auto">
+        <p class = "projectDescription" style="font-family: Arial, Helvetica, sans-serif; font-size: 17px; line-height: 1.5;">
+            A simple script that allows you to get the legacy Paint, Snipping Tool, and Math Input Panel back for Windows 11. Built using Python utilizing PowerShell commands.
+        </p>
     </div>
     <div class = "projectFrame">
-
+        <a href = "https://github.com/adamakh01/ACC-Tablet" class = "projectTitle" target="_blank">ACC Tablet</a>
+        <img src = "src\lib\projectImages\ACC Tablet.PNG" alt = "ACC Tablet" class = "projectImage" style = "position:relative; top:6%; left:15%; width: 70%; height: auto">
+        <p class = "projectDescription" style="font-family: Arial, Helvetica, sans-serif; font-size: 17px; line-height: 1.5;">
+            A silly little project I made while I was bored. Relatively incomplete.
+        </p>
     </div>
     <div class = "projectFrame">
-
+        <a href = "https://github.com/adamakh01/Grade-Calculator" class = "projectTitle" target="_blank">Grade Calculator</a>
+        <img src = "src\lib\projectImages\GradebookFiller.PNG" alt = "Grade Calculator" class = "projectImage" style = "position:relative; top:6%; left:32%; width: 35%; height: auto">
+        <p class = "projectDescription" style="font-family: Arial, Helvetica, sans-serif; font-size: 17px; line-height: 1.5;">
+            A simple grade calculator that allows you to input your grades and calculate your overall grade. Can be done for multiple classes.
+            Built using code.org and JavaScript.
+        </p>
     </div>
 </main>
 <main>
