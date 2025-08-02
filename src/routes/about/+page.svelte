@@ -170,19 +170,21 @@
     <div class = "courseFrame">
         <p class = "courseTaken" style="font-family: Arial, Helvetica, sans-serif; font-size: 20px; font-weight:bold; line-height: 1.5;">
             Applicable Courses:
-            <ul style = "font-family: Arial, Helvetica, sans-serif; font-size: 20px; line-height: 1.5; list-style-type: disc; padding-left: 20px;">
-                <li>AP Computer Science Principles</li>
-                <li>AP Computer Science A</li>
-                <li>AP Calculus AB</li>
-                <li>MATH 150B - Calculus II</li>
-                <li>MATH 250A - Calculus III</li>
-                <li>CPSC 121 - Object Oriented Programming</li>
-                <li>CPSC 131 - Data Structures</li>
-            </ul>
+        </p>
+        <ul style = "font-family: Arial, Helvetica, sans-serif; font-size: 20px; line-height: 1.5; list-style-type: disc; padding-left: 20px;">
+            <li>AP Computer Science Principles</li>
+            <li>AP Computer Science A</li>
+            <li>AP Calculus AB</li>
+            <li>MATH 150B - Calculus II</li>
+            <li>MATH 250A - Calculus III</li>
+            <li>CPSC 121 - Object Oriented Programming</li>
+            <li>CPSC 131 - Data Structures</li>
+        </ul>
     </div>
     <div class = "languagesFrame">
         <p class = "languagesKnown" style="font-family: Arial, Helvetica, sans-serif; font-size: 20px; font-weight:bold; line-height: 1.5;">
             Programming Languages and Toolkits:
+        </p>
             <ul style = "font-family: Arial, Helvetica, sans-serif; font-size: 20px; line-height: 1.5; list-style-type: disc; padding-left: 20px;">
                 <li>Java</li>
                 <li>Python</li>
