@@ -128,35 +128,6 @@
         font-weight: bold;
         color: #F6F6F6;
     }
-    .basicInfo{
-        position:fixed;
-        left:55px;
-        top:14rem;
-        box-sizing: border-box;
-        width:500px;
-        height:200px;
-        margin-top: 2rem;
-        font-family: Arial, Helvetica, sans-serif;
-        background-color:#445b94;
-        border-radius:2rem;
-        text-align:center;
-        padding:1rem;
-    }
-    .occupationLink{
-        display:block;
-        margin-bottom:1rem;
-        text-decoration: none;
-        transition:color 0.55s;
-        font-size: 15px;
-        max-width: 92%;;
-        margin-left:0;
-        margin-right:0;
-    }
-    .occupationLink:hover{
-        color:#F6F6F6;
-        text-decoration:underline;
-        text-decoration-color:#F6F6F6;
-    }
     .gallery{
         position:fixed;
         left:610px;
@@ -216,14 +187,15 @@
         left:25.5%;
     }
     .recentProjects{
-        display:block;
+        display:flex;
+        flex-direction: column;
+        align-content:center;
         position:fixed;
         left:55px;
-        top:28rem;
+        top:18rem;
         box-sizing: border-box;
         width:500px;
-        height:350px;
-        margin-top: 2rem;
+        height:540px;
         font-family: Arial, Helvetica, sans-serif;
         background-color:#445b94;
         border-radius:2rem;
@@ -251,15 +223,6 @@
         <h2 class = "introStatement">Hello! My name is Adam.</h2>
         <p>Feel free to take a look around! :D</p>
     </div>
-    <div class = "basicInfo">
-        <h2>My Occupation</h2>
-        <a href = "https://www.fullerton.edu/ecs/cs" class = "occupationLink" target="_blank">
-            Computer Science, B.S Undergraduate @ California State University, Fullerton
-        </a>
-        <a href = "https://www.fullerton.edu/si" class = "occupationLink" target="_blank">
-            Math Department Supplemental Instruction Leader @ California State University, Fullerton
-        </a>
-    </div>
     <div class = "gallery">
         <h2>My Gallery</h2>
         <img class="galleryPic" src={images[slideIndex].src} alt={images[slideIndex].alt}>
@@ -271,12 +234,12 @@
     </div>
     <div class = "recentProjects">
         <h2>My Recent Project</h2>
-        <a href = "https://github.com/adamakh01/ACC-Tablet" class = "nav-link" target="_blank">
-            ACC Tablet
+        <a href = "https://github.com/adamakh01/very-cool-website" class = "nav-link" target="_blank">
+            Adam Ho's Portfolio
         </a>
-        <img class = "projectPic" src = "src\lib\projectImages\ACC Tablet.PNG" alt = "ACC Tablet Project" style="position:fixed; width: 9%; height: auto; margin-top: 0.5rem; left:12%; top: 65%;">
-        <p class = "description" style="position:fixed; top: 80%; padding:0.05rem;">
-            A silly little project I made while I was bored. Relatively incomplete.
+         <img src = "src/lib/projectImages/AdamHoPortfolio.png" alt = "Adam Ho's Portfolio" class = "projectPic" style = "position:relative; top:6%; width: 100%; height: auto; margin-bottom:2rem;">
+        <p class = "description" style="margin:0.5rem; padding:1rem;">
+            Portfolio website showcasing my projects and skills, as well as present my contact info. Built with Sveltekit (HTML, CSS, and JavaScript).
         </p>
     </div>
 </main>
