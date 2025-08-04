@@ -1,14 +1,10 @@
-import adapter from '@sveltejs/adapter-static';
- 
-/** @type {imdwqdport('@sveltejs/kit').Config} */
+import adapter from '@sveltejs/adapter-vercel';
+
+/** @type {import('@sveltejs/kit').Config} */
 const config = {
 	kit: {
-		adapter: adapter({
-			fallback: '404.html'
-		})
-	},
+		adapter: adapter()
+	}
 };
-
-config.paths = { base: process.argv.includes('dev') ? '' : "/very-cool-website" }
 
 export default config;
