@@ -123,8 +123,8 @@
 <header>
     <h1>Adam Ho</h1>
     <a href="/" class = "nav-link">Home</a>
-    <h2 class = "activeLink">About Me</h2>
-    <a href="/projects" class="nav-link">Projects</a>
+    <a href = "/about" class = "nav-link">About Me</a>
+    <h2 class = "activeLink">Projects</h2>
             <a href="https://www.instagram.com/farmerakh/" class="nav-image" target="_blank">
         <img src="/images/linkImages/instagram-white-icon.svg" alt="Instagram" style="width: 30px; height: 30px;">
     </a>
