@@ -140,18 +140,18 @@
     <h2 class = "activeLink">About Me</h2>
     <a href="/projects" class="nav-link">Projects</a>
             <a href="https://www.instagram.com/farmerakh/" class="nav-image" target="_blank">
-        <img src="src/images/linkImages/instagram-white-icon.svg" alt="Instagram" style="width: 30px; height: 30px;">
+        <img src="/images/linkImages/instagram-white-icon.svg" alt="Instagram" style="width: 30px; height: 30px;">
     </a>
     <a href="https://www.linkedin.com/in/adam-ho-a65786202" class="nav-image" target="_blank">
-        <img src="src\images\linkImages\linkedin-app-white-icon.svg" alt="LinkedIn" style="width: 30px; height: 30px;">
+        <img src="\images\linkImages\linkedin-app-white-icon.svg" alt="LinkedIn" style="width: 30px; height: 30px;">
     </a>
     <a href="https://github.com/adamakh01" class="nav-image" target="_blank">
-        <img src="src\images\linkImages\github-mark-white.svg" alt="GitHub" style="width: 30px; height: 30px;">
+        <img src="\images\linkImages\github-mark-white.svg" alt="GitHub" style="width: 30px; height: 30px;">
     </a>
 </header>
 <main id="main-content">
     <div class = "userPFP">
-        <img class = "Profile" src="src/images/aboutImages/pfp.jpg" alt="Profile" style = "width: 200px; height: 200px; border-radius: 50%;">
+        <img class = "Profile" src="/images/aboutImages/pfp.jpg" alt="Profile" style = "width: 200px; height: 200px; border-radius: 50%;">
         <h2 class = "name" style="font-family: 'Roboto', sans-serif; font-size: 45px;">Adam Ho</h2>
         <h3 class = "userName" style = "font-family:Arial; font-size: 30px;">@farmerakh</h3>
         <h4 class = "email" style = "font-family:Arial; font-size: 20px;">studies463@outlook.com</h4>

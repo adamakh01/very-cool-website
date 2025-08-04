@@ -1,10 +1,10 @@
 <script>
     let slideIndex = 0;
     const images = [
-        { src: "src/images/images/beachday.JPG", alt: "beachday" },
-        { src: "src/images/images/arthistoryproject.JPG", alt: "Art History 101 Project" },
-        { src: "src/images/images/midwayMuseum.JPG", alt: "Midway Museum" },
-        { src: "src/images/images/rainyDay.JPG", alt: "Rainy Day" }
+        { src: "/images/images/beachday.JPG", alt: "beachday" },
+        { src: "/images/images/arthistoryproject.JPG", alt: "Art History 101 Project" },
+        { src: "/images/images/midwayMuseum.JPG", alt: "Midway Museum" },
+        { src: "/images/images/rainyDay.JPG", alt: "Rainy Day" }
     ];
     const captions = [
         "Beach Day 2024!",
@@ -209,13 +209,13 @@
     <a href="/about" class="nav-link">About Me</a>
     <a href="/projects" class="nav-link">Projects</a>
     <a href="https://www.instagram.com/farmerakh/" class="nav-image" target="_blank">
-        <img src="src/images/linkImages/instagram-white-icon.svg" alt="Instagram" style="width: 30px; height: 30px;">
+        <img src="/images/linkImages/instagram-white-icon.svg" alt="Instagram" style="width: 30px; height: 30px;">
     </a>
     <a href="https://www.linkedin.com/in/adam-ho-a65786202" class="nav-image" target="_blank">
-        <img src="src\images\linkImages\linkedin-app-white-icon.svg" alt="LinkedIn" style="width: 30px; height: 30px;">   
+        <img src="\images\linkImages\linkedin-app-white-icon.svg" alt="LinkedIn" style="width: 30px; height: 30px;">   
     </a>
     <a href="https://github.com/adamakh01" class="nav-image" target="_blank">
-        <img src="src\images\linkImages\github-mark-white.svg" alt="GitHub" style="width: 30px; height: 30px;">
+        <img src="\images\linkImages\github-mark-white.svg" alt="GitHub" style="width: 30px; height: 30px;">
     </a>
 </header>
 <main id="main-content">
@@ -237,7 +237,7 @@
         <a href = "https://github.com/adamakh01/very-cool-website" class = "nav-link" target="_blank">
             Adam Ho's Portfolio
         </a>
-         <img src = "src/images/projectImages/AdamHoPortfolio.png" alt = "Adam Ho's Portfolio" class = "projectPic" style = "position:relative; top:6%; width: 100%; height: auto; margin-bottom:2rem;">
+         <img src = "/images/projectImages/AdamHoPortfolio.png" alt = "Adam Ho's Portfolio" class = "projectPic" style = "position:relative; top:6%; width: 100%; height: auto; margin-bottom:2rem;">
         <p class = "description" style="margin:0.5rem; padding:1rem;">
             Portfolio website showcasing my projects and skills, as well as present my contact info. Built with Sveltekit (HTML, CSS, and JavaScript).
         </p>
