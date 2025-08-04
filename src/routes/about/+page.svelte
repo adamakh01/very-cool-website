@@ -158,11 +158,13 @@
     </div>
     <div class = "aboutMe">
         <p class = "aboutText" style="font-family: Arial, Helvetica, sans-serif; font-size: 18px; line-height: 1.5;">
-            Hello. My name is Adam Ho, and I am Computer Science major perusing a Bachelors.
+            Hello. My name is Adam Ho, and I am currently a 2nd year student at California State University, Fullerton pursuing a degree in Computer Science.
             I enjoy programming and creating various projects that just come to mind randomly. Various projects I created are the HappyChild for Autism (not available on GitHub) Grade Calculator, and this website you are currently viewing. In addition, I am also part of the Association for Computing Machinery (ACM) at CSUF, 
-            where I am a member of the API Team in Open Source for ACM. Some notable tasks I did was creating a demo webpage so others can interact with the API, setting up the services for Announcements, and contributed to OpenDocs.
-            In addition to being a programmer, I am also a Supplemental Instruction Leader for the Math Department, where I am assigned a math course and hold sessions to help students understand the material better, as well as getting better grades.
+            where I am a member of the API Team in Open Source. Some notable tasks I did was creating a demo webpage so others can interact with the API, setting up the services for Announcements, and contributed to OpenDocs.
+            In addition to being a programmer, I am also a Supplemental Instruction Leader for the Math Department at CSUF, where I am assigned a math course and hold sessions to help students understand the material better, as well as getting better grades.
+            In my free time, I like to play video games, watch various shows, and hanging out with friends.
             Some video games I enjoy playing are VALORANT, Minecraft, and OSU!. Most recently I became hooked on Tetris as it trains my thinking speed.
+            My favorite shows are The Big Bang Theory, Modern Family, Fresh off the Boat, and a few others I liked were Blue Box, Fruits Basket, Your Lie in April, and much more.
         </p>
     </div>
     <div class = "courseFrame">
@@ -173,10 +175,10 @@
             <li>AP Computer Science Principles</li>
             <li>AP Computer Science A</li>
             <li>AP Calculus AB</li>
-            <li>Calculus II</li>
-            <li>Calculus III</li>
-            <li>Object Oriented Programming (C++)</li>
-            <li>Data Structures (C++)</li>
+            <li>MATH 150B - Calculus II</li>
+            <li>MATH 250A - Calculus III</li>
+            <li>CPSC 121 - Object Oriented Programming</li>
+            <li>CPSC 131 - Data Structures</li>
         </ul>
     </div>
     <div class = "languagesFrame">
