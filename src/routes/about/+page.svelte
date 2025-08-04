@@ -164,7 +164,6 @@
             In addition to being a programmer, I am also a Supplemental Instruction Leader for the Math Department at CSUF, where I am assigned a math course and hold sessions to help students understand the material better, as well as getting better grades.
             In my free time, I like to play video games, watch various shows, and hanging out with friends.
             Some video games I enjoy playing are VALORANT, Minecraft, and OSU!. Most recently I became hooked on Tetris as it trains my thinking speed.
-            My favorite shows are The Big Bang Theory, Modern Family, Fresh off the Boat, and a few others I liked were Blue Box, Fruits Basket, Your Lie in April, and much more.
         </p>
     </div>
     <div class = "courseFrame">
