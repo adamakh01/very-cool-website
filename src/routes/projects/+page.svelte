@@ -123,43 +123,43 @@
 <header>
     <h1>Adam Ho</h1>
     <a href="/" class = "nav-link">Home</a>
-    <a href="/about" class = "nav-link">About Me</a>
-    <h2 class = "activeLink">Projects</h2>
-    <a href="https://www.instagram.com/farmerakh/" class="nav-image" target="_blank">
-        <img src="src/lib/linkImages/instagram-white-icon.svg" alt="Instagram" style="width: 30px; height: 30px;">
+    <h2 class = "activeLink">About Me</h2>
+    <a href="/projects" class="nav-link">Projects</a>
+            <a href="https://www.instagram.com/farmerakh/" class="nav-image" target="_blank">
+        <img src="src/images/linkImages/instagram-white-icon.svg" alt="Instagram" style="width: 30px; height: 30px;">
     </a>
     <a href="https://www.linkedin.com/in/adam-ho-a65786202" class="nav-image" target="_blank">
-        <img src="src\lib\linkImages\linkedin-app-white-icon.svg" alt="LinkedIn" style="width: 30px; height: 30px;">
+        <img src="src\images\linkImages\linkedin-app-white-icon.svg" alt="LinkedIn" style="width: 30px; height: 30px;">
     </a>
     <a href="https://github.com/adamakh01" class="nav-image" target="_blank">
-        <img src="src\lib\linkImages\github-mark-white.svg" alt="GitHub" style="width: 30px; height: 30px;">
+        <img src="src\images\linkImages\github-mark-white.svg" alt="GitHub" style="width: 30px; height: 30px;">
     </a>
 </header>
 <main id="main-content">
     <div class = "projectFrame">
         <a href = "https://github.com/adamakh01/very-cool-website" class = "projectTitle" target="_blank">Adam Ho's Portfolio</a>
-        <img src = "src/lib/projectImages/AdamHoPortfolio.png" alt = "Adam Ho's Portfolio" class = "projectImage" style = "position:relative; top:6%; width: 100%; height: auto">
+        <img src = "src/images/projectImages/AdamHoPortfolio.png" alt = "Adam Ho's Portfolio" class = "projectImage" style = "position:relative; top:6%; width: 100%; height: auto">
         <p class = "projectDescription" style="font-family: Arial, Helvetica, sans-serif; font-size: 17px; line-height: 1.5;">
             Portfolio website showcasing my projects and skills, as well as present my contact info. Built with Sveltekit (HTML, CSS, and JavaScript).
         </p>
     </div>
     <div class = "projectFrame">
         <a href = "https://github.com/adamakh01/Get-Legacy-Apps-Back-for-Windows-11" class = "projectTitle" target="_blank">Legacy Apps for Windows 11</a>
-        <img src = "src/lib/projectImages/LegacyApps.png" alt = "Get Legacy Apps Back for Windows 11" class = "projectImage" style = "position:relative; top:6%; width: 100%; height: auto">
+        <img src = "src/images/projectImages/LegacyApps.png" alt = "Get Legacy Apps Back for Windows 11" class = "projectImage" style = "position:relative; top:6%; width: 100%; height: auto">
         <p class = "projectDescription" style="font-family: Arial, Helvetica, sans-serif; font-size: 17px; line-height: 1.5;">
             A simple script that allows you to get the legacy Paint, Snipping Tool, and Math Input Panel back for Windows 11. Built using Python utilizing PowerShell commands.
         </p>
     </div>
     <div class = "projectFrame">
         <a href = "https://github.com/adamakh01/ACC-Tablet" class = "projectTitle" target="_blank">ACC Tablet</a>
-        <img src = "src\lib\projectImages\ACC Tablet.PNG" alt = "ACC Tablet" class = "projectImage" style = "position:relative; top:6%; left:15%; width: 70%; height: auto">
+        <img src = "src\images\projectImages\ACC Tablet.PNG" alt = "ACC Tablet" class = "projectImage" style = "position:relative; top:6%; left:15%; width: 70%; height: auto">
         <p class = "projectDescription" style="font-family: Arial, Helvetica, sans-serif; font-size: 17px; line-height: 1.5;">
             A silly little project I made while I was bored. Relatively incomplete.
         </p>
     </div>
     <div class = "projectFrame">
         <a href = "https://github.com/adamakh01/Grade-Calculator" class = "projectTitle" target="_blank">Grade Calculator</a>
-        <img src = "src\lib\projectImages\GradebookFiller.PNG" alt = "Grade Calculator" class = "projectImage" style = "position:relative; top:6%; left:32%; width: 35%; height: auto">
+        <img src = "src\images\projectImages\GradebookFiller.PNG" alt = "Grade Calculator" class = "projectImage" style = "position:relative; top:6%; left:32%; width: 35%; height: auto">
         <p class = "projectDescription" style="font-family: Arial, Helvetica, sans-serif; font-size: 17px; line-height: 1.5;">
             A simple grade calculator that allows you to input your grades and calculate your overall grade. Can be done for multiple classes.
             Built using code.org and JavaScript.
