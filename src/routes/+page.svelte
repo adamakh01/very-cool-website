@@ -74,13 +74,17 @@
         font-size: 20px;
         transition: color 0.55s;
     }
+    .nav-icons-wrapper {
+        margin-left: auto;
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+    }
     .nav-image {
-        position: relative;
-        left:65%;
-        margin-left:2px;
-        display:block;
-        position:relative;
-        gap:0.5rem;
+        display: block;
+        width: 2.5rem;
+        height: 2.5rem;
+        cursor: pointer;
     }
     main{
         top:10px;
@@ -153,7 +157,7 @@
         margin: 1.5rem auto 0 auto;
     }
     .gallery-left, .gallery-right {
-        position: absolute;
+        position: relative;
         top: 50%;
         transform: translateY(-50%);
         background:#223A70;
@@ -202,21 +206,24 @@
         text-align:center;
         padding: 1rem;
     }
+
 </style>
 <header>
     <h1>Adam Ho</h1>
     <h2 class = "activeLink">Home</h2>
-    <a href="/about" class="nav-link">About Me</a>
+        <a href="/about" class="nav-link">About Me</a>
     <a href="/projects" class="nav-link">Projects</a>
-    <a href="https://www.instagram.com/farmerakh/" class="nav-image" target="_blank">
-        <img src="/images/linkImages/instagram-white-icon.svg" alt="Instagram" style="width: 30px; height: 30px;">
-    </a>
-    <a href="https://www.linkedin.com/in/adam-ho-a65786202" class="nav-image" target="_blank">
-        <img src="\images\linkImages\linkedin-app-white-icon.svg" alt="LinkedIn" style="width: 30px; height: 30px;">   
-    </a>
-    <a href="https://github.com/adamakh01" class="nav-image" target="_blank">
-        <img src="\images\linkImages\github-mark-white.svg" alt="GitHub" style="width: 30px; height: 30px;">
-    </a>
+    <div class = "nav-icons-wrapper">
+        <a href="https://www.instagram.com/farmerakh/" class="nav-image" target="_blank">
+            <img src="/images/linkImages/instagram-white-icon.svg" alt="Instagram" style="width: 30px; height: 30px;">
+        </a>
+        <a href="https://www.linkedin.com/in/adam-ho-a65786202" class="nav-image" target="_blank">
+            <img src="\images\linkImages\linkedin-app-white-icon.svg" alt="LinkedIn" style="width: 30px; height: 30px;">   
+        </a>
+        <a href="https://github.com/adamakh01" class="nav-image" target="_blank">
+            <img src="\images\linkImages\github-mark-white.svg" alt="GitHub" style="width: 30px; height: 30px;">
+        </a>
+    </div>
 </header>
 <main id="main-content">
     <div class = "intro">

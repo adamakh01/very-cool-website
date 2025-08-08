@@ -56,13 +56,17 @@
         font-size: 20px;
         transition: color 0.55s;
     }
+    .nav-icons-wrapper {
+        margin-left: auto;
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+    }
     .nav-image {
-        position: relative;
-        left:65%;
-        margin-left:2px;
-        display:block;
-        position:relative;
-        gap:0.5rem;
+        display: block;
+        width: 2.5rem;
+        height: 2.5rem;
+        cursor: pointer;
     }
     main{
         top:10px;
@@ -111,7 +115,7 @@
         padding:2rem;
         border-radius: 10px;
         left:10%;
-        top:-55%;
+        top:-450px;
     }
     .courseFrame {
         position:relative;
@@ -121,7 +125,7 @@
         padding:2rem;
         border-radius: 10px;
         left:-10%;
-        top:-50%;
+        top:-26rem;
     }
     .languagesFrame {
         position:relative;
@@ -131,23 +135,26 @@
         padding:2rem;
         border-radius: 10px;
         left:30%;
-        top:-94%;
+        top:-48.7rem;
     }
+
 </style>
 <header>
     <h1>Adam Ho</h1>
-    <a href="/" class = "nav-link">Home</a>
+    <a href="/" class="nav-link">Home</a>
     <h2 class = "activeLink">About Me</h2>
     <a href="/projects" class="nav-link">Projects</a>
-            <a href="https://www.instagram.com/farmerakh/" class="nav-image" target="_blank">
-        <img src="/images/linkImages/instagram-white-icon.svg" alt="Instagram" style="width: 30px; height: 30px;">
-    </a>
-    <a href="https://www.linkedin.com/in/adam-ho-a65786202" class="nav-image" target="_blank">
-        <img src="\images\linkImages\linkedin-app-white-icon.svg" alt="LinkedIn" style="width: 30px; height: 30px;">
-    </a>
-    <a href="https://github.com/adamakh01" class="nav-image" target="_blank">
-        <img src="\images\linkImages\github-mark-white.svg" alt="GitHub" style="width: 30px; height: 30px;">
-    </a>
+    <div class = "nav-icons-wrapper">
+        <a href="https://www.instagram.com/farmerakh/" class="nav-image" target="_blank">
+            <img src="/images/linkImages/instagram-white-icon.svg" alt="Instagram" style="width: 30px; height: 30px;">
+        </a>
+        <a href="https://www.linkedin.com/in/adam-ho-a65786202" class="nav-image" target="_blank">
+            <img src="\images\linkImages\linkedin-app-white-icon.svg" alt="LinkedIn" style="width: 30px; height: 30px;">   
+        </a>
+        <a href="https://github.com/adamakh01" class="nav-image" target="_blank">
+            <img src="\images\linkImages\github-mark-white.svg" alt="GitHub" style="width: 30px; height: 30px;">
+        </a>
+    </div>
 </header>
 <main id="main-content">
     <div class = "userPFP">
