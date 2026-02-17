@@ -465,10 +465,13 @@
     <div class = "basicInfo">
         <h2>My Occupation</h2>
         <a href = "https://www.fullerton.edu/ecs/cs" class = "occupationLink" target="_blank">
-            Computer Science, B.S Undergraduate @ California State University, Fullerton
+            Computer Science, B.S Undergraduate @ CSUF
         </a>
         <a href = "https://www.fullerton.edu/si" class = "occupationLink" target="_blank">
-            Math Department Supplemental Instruction Leader @ California State University, Fullerton
+            Math Supplemental Instruction Leader @ CSUF
+        </a>
+        <a href = "https://acmcsuf.com/teams#oss" class = "occupationLink" target="_blank">
+            Open Source Officer @ ACM at CSUF
         </a>
     </div>
     <div class = "gallery">
