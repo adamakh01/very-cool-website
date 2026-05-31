@@ -127,8 +127,8 @@
         position: relative;
         display: flex;
         flex-direction: column;
-        width: 1500px;
-        height: 500px;
+        width: clamp(800px, 80vw, 1500px);
+        height: clamp(400px, 100vh, 700px);
         background: #323437;
         border: 1px solid #313131;
         border-radius: 16px;
@@ -197,7 +197,7 @@
     }
     .code{
         padding-left: 10px;
-        font-size: 50px;
+        font-size: clamp(10px, 4vw, 60px);
         font-family: Consolas, Monaco, 'Courier New', monospace;
         color: #FFFF00;
     }
