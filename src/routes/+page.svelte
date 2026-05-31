@@ -1,4 +1,50 @@
-<script> let text = "> " </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+<script> 
+	// Define your website's available inner pages
+	const pages = ['/about', '/projects'];
+
+	// Initialize the href with a random page choice
+	let randomHref = (pages[Math.floor(Math.random() * pages.length)]);
+
+	// Pick a fresh random page so subsequent clicks route elsewhere
+	function updateRandomPage() {
+		const alternativePages = pages.filter(p => p !== randomHref);
+		const randomIndex = Math.floor(Math.random() * alternativePages.length);
+		randomHref = alternativePages[randomIndex];
+	}
+    let text = "> ";
+    import { fade, fly } from 'svelte/transition';
+
+    let message = '';
+    let toastId = 0;
+    let timeoutId;
+    
+    const personMe = [
+        'I am a Computer Science Major!',
+        'I am currently learning Flutter!',
+        'I want get into more backend development.', 
+        'I was an Open Source ACM Board member!',
+        'I was a project lead for Open Source Stats!',
+        'I have previously assisted students in Business Calculus and Calc II.',
+        'I have been doing supplemental instruction for 2 semesters!',
+        'Originally an Oregonian!',
+        'Previous VALORANT Addict',
+        'Thank you for exploring my portfolio! :D']
+
+    function showMessage(text) {
+        clearTimeout(timeoutId);
+        let randomIndex = Math.floor(Math.random() * personMe.length);
+        let randomMessage = personMe[randomIndex];
+        message = randomMessage;
+        toastId += 1;
+
+        timeoutId = setTimeout(() => {
+            message = '';
+        }, 2000);
+    }
+</script>
 <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
 <style>
     header{
@@ -55,6 +101,8 @@
         position:relative;
         margin:0;
         color:#ffffff;
+        font-family: 'Space Grotesk', sans-serif;
+        letter-spacing: -0.02em;
         font-weight:bold;
         font-size:50px;
     }
@@ -68,7 +116,7 @@
         height: 100vh;
         color: #F6F6F6;
         position: fixed;
-        height: calc(100vh - 6rem);
+        min-height: calc(100vh - 6rem);
         width: 100vw;
         top: 6rem;
         left: 0;
@@ -81,7 +129,7 @@
         flex-direction: column;
         width: 1500px;
         height: 500px;
-        background: #111;
+        background: #323437;
         border: 1px solid #313131;
         border-radius: 16px;
 
@@ -129,11 +177,29 @@
         transform: scale(1.05);
         cursor: pointer;
     }
+    .toast {
+        position: fixed;
+
+        /* adjust to sit below your header */
+        top: 120px;
+        right: 20px;
+
+        padding: 12px 16px;
+        border-radius: 8px;
+
+        background: #222;
+        color: white;
+
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        font-family: 'Inter', sans-serif;
+
+        z-index: 1000;
+    }
     .code{
         padding-left: 10px;
         font-size: 50px;
         font-family: Consolas, Monaco, 'Courier New', monospace;
-        color: #aaaaaa;
+        color: #FFFF00;
     }
 
     .mainPageButton{
@@ -153,6 +219,7 @@
     .modernButton:hover{
         background-color: rgb(235, 235, 235);
     }
+    
 </style>
 
 <header>
@@ -168,24 +235,37 @@
     <div class = "notepad">
         <div class="window-bar">
             <div class="dots">
-            <span class="red"></span>
-            <span class="yellow"></span>
-            <span class="green"></span>
+                <!-- svelte-ignore a11y_click_events_have_key_events -->
+                <!-- svelte-ignore a11y_no_static_element_interactions -->
+                <span class="red" onclick={showMessage('hi')}></span>
+                <!-- svelte-ignore a11y_click_events_have_key_events -->
+                <!-- svelte-ignore a11y_no_static_element_interactions -->
+                <span class="yellow" onclick={showMessage('Minimize clicked')}></span>
+                <!-- svelte-ignore a11y_click_events_have_key_events -->
+                <!-- svelte-ignore a11y_no_static_element_interactions -->
+                <span class="green" onclick={showMessage('Maximize clicked')}></span>
             </div>
         </div>
 
         <p class = "code">{text}<span class = "auto-type"></span></p>
     </div>
+    {#if message}
+        {#key toastId}
+            <div class="toast" in:fly={{ x: 20, duration: 200 }} out:fade={{ duration: 200 }}>
+                {message}
+            </div>
+        {/key}
+    {/if}
     <script src = "https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script>
         var typed = new Typed(".auto-type", {
-            strings: ["Adam Ho<br>> Computer Science Student<br>> Math Supplemental Instruction Leader"],
+            strings: ["Adam Ho<br>> Aspiring SWE<br>> Math Supplemental Instruction Leader @CSUF"],
             typeSpeed: 20,
             loop: false
         });
     </script>
     <div class = "mainPageButton">
-        <a class = "modernButton">Explore Me!</a>
+        <a href={randomHref} onclick={updateRandomPage} class = "modernButton">Explore Me!</a>
     </div>
 
 </main>
