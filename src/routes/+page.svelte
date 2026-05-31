@@ -29,6 +29,7 @@
         'I was a project lead for Open Source Stats!',
         'I have previously assisted students in Business Calculus and Calc II.',
         'I have been doing supplemental instruction for 2 semesters!',
+        'I love my friends! I enjoy spending time with them.',
         'Originally an Oregonian!',
         'Previous VALORANT Addict',
         'Thank you for exploring my portfolio! :D']
@@ -47,11 +48,16 @@
 </script>
 <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
 <style>
+    body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
     header{
         display: flex;
         justify-content: space-between;
         align-items: center;
-        position:relative;
+        position:fixed;
         top:0;
         width:100vw;
         max-width: 100vw;
@@ -88,14 +94,6 @@
         padding-right: 10px;
     }
 
-    main{
-        top:10px;
-        position:fixed;
-        padding-top: 2rem;
-        background:#526fb1;
-        color:#F6F6F6;
-    }
-
     .titleLink {
         left:10px;
         position:relative;
@@ -108,18 +106,15 @@
     }
 
     main#main-content {
+        flex: 1;
+        margin-top: 6rem;
         display: flex;
-        position:relative;
         flex-direction: column;
         align-items: center;
-        background: linear-gradient(to bottom, #000000 80%, #b6b6b6 100%);
-        height: 100vh;
+        background: linear-gradient(to bottom, #000000 95%, #b6b6b6 100%);
         color: #F6F6F6;
-        position: fixed;
-        min-height: calc(100vh - 6rem);
+        height: 85vw;
         width: 100vw;
-        top: 6rem;
-        left: 0;
         overflow-y: auto;
     }
 
@@ -127,8 +122,8 @@
         position: relative;
         display: flex;
         flex-direction: column;
-        width: clamp(800px, 80vw, 1500px);
-        height: clamp(400px, 100vh, 700px);
+        width: clamp(400px, 80vw, 1500px);
+        height: clamp(150px, 100vh, 700px);
         background: #323437;
         border: 1px solid #313131;
         border-radius: 16px;
@@ -219,53 +214,64 @@
     .modernButton:hover{
         background-color: rgb(235, 235, 235);
     }
-    
-</style>
 
-<header>
-    <h1>
-        <a href = "/" class = "titleLink">Adam Ho</a>
-    </h1>
-    <div class = "nav-link-wrapper">
-        <a href="/about" class="nav-link">About Me</a>
-        <a href="/projects" class="nav-link">Projects</a>
-    </div>
-</header>
-<main id="main-content">
-    <div class = "notepad">
-        <div class="window-bar">
-            <div class="dots">
-                <!-- svelte-ignore a11y_click_events_have_key_events -->
-                <!-- svelte-ignore a11y_no_static_element_interactions -->
-                <span class="red" onclick={showMessage('hi')}></span>
-                <!-- svelte-ignore a11y_click_events_have_key_events -->
-                <!-- svelte-ignore a11y_no_static_element_interactions -->
-                <span class="yellow" onclick={showMessage('Minimize clicked')}></span>
-                <!-- svelte-ignore a11y_click_events_have_key_events -->
-                <!-- svelte-ignore a11y_no_static_element_interactions -->
-                <span class="green" onclick={showMessage('Maximize clicked')}></span>
+    footer {
+        background: #b6b6b6;
+        color: white;
+        text-align: center;
+        padding: 1rem;
+    }
+
+</style>
+<body>
+    <header>
+        <h1>
+            <a href = "/" class = "titleLink">Adam Ho</a>
+        </h1>
+        <div class = "nav-link-wrapper">
+            <a href="/about" class="nav-link">About Me</a>
+            <a href="/projects" class="nav-link">Projects</a>
+        </div>
+    </header>
+    <main id="main-content">
+        <div class = "notepad">
+            <div class="window-bar">
+                <div class="dots">
+                    <!-- svelte-ignore a11y_click_events_have_key_events -->
+                    <!-- svelte-ignore a11y_no_static_element_interactions -->
+                    <span class="red" onclick={showMessage('hi')}></span>
+                    <!-- svelte-ignore a11y_click_events_have_key_events -->
+                    <!-- svelte-ignore a11y_no_static_element_interactions -->
+                    <span class="yellow" onclick={showMessage('Minimize clicked')}></span>
+                    <!-- svelte-ignore a11y_click_events_have_key_events -->
+                    <!-- svelte-ignore a11y_no_static_element_interactions -->
+                    <span class="green" onclick={showMessage('Maximize clicked')}></span>
+                </div>
             </div>
+
+            <p class = "code">{text}<span class = "auto-type"></span></p>
+        </div>
+        {#if message}
+            {#key toastId}
+                <div class="toast" in:fly={{ x: 20, duration: 200 }} out:fade={{ duration: 200 }}>
+                    {message}
+                </div>
+            {/key}
+        {/if}
+        <script src = "https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+        <script>
+            var typed = new Typed(".auto-type", {
+                strings: ["Adam Ho<br>> Aspiring SWE<br>> Math Supplemental Instruction Leader @CSUF"],
+                typeSpeed: 20,
+                loop: false
+            });
+        </script>
+        <div class = "mainPageButton">
+            <a href={randomHref} onclick={updateRandomPage} class = "modernButton">Explore Me!</a>
         </div>
 
-        <p class = "code">{text}<span class = "auto-type"></span></p>
-    </div>
-    {#if message}
-        {#key toastId}
-            <div class="toast" in:fly={{ x: 20, duration: 200 }} out:fade={{ duration: 200 }}>
-                {message}
-            </div>
-        {/key}
-    {/if}
-    <script src = "https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <script>
-        var typed = new Typed(".auto-type", {
-            strings: ["Adam Ho<br>> Aspiring SWE<br>> Math Supplemental Instruction Leader @CSUF"],
-            typeSpeed: 20,
-            loop: false
-        });
-    </script>
-    <div class = "mainPageButton">
-        <a href={randomHref} onclick={updateRandomPage} class = "modernButton">Explore Me!</a>
-    </div>
-
-</main>
+    </main>
+    <footer>
+        <p>2026 FarmerAKH</p>
+    </footer>
+</body>
