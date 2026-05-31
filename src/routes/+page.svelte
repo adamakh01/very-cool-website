@@ -1,24 +1,4 @@
-<script>
-  import { pushState } from "$app/navigation";
-
-    let text = "Adam Ho";
-    let typedChars = "";
-    let index = 0;
-    let typeWriter;
-
-    const typeChar = () => {
-        if(index < text.length) {
-            typedChars += text[index];
-            index += 1;
-        } else {
-            clearInterval(typeWriter);
-        }
-    }
-
-    const typing = () => typeWriter = setInterval(typeChar, 100);
-    typing()
-
-</script>
+<script> let text = "> " </script>
 <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
 <style>
     header{
@@ -65,7 +45,7 @@
     main{
         top:10px;
         position:fixed;
-        padding-top: 4rem;
+        padding-top: 2rem;
         background:#526fb1;
         color:#F6F6F6;
     }
@@ -99,12 +79,79 @@
         position: relative;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        width: 500px;
+        width: 1500px;
         height: 500px;
+        background: #111;
+        border: 1px solid #313131;
+        border-radius: 16px;
+
+    }
+
+    .window-bar{
+        height: 40px;
+        display: flex;
+        align-items: center;
+        padding: 0 12px;
+        background: linear-gradient(#1b1b1b, #151515);
+        backdrop-filter: blur(6px);
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-bottom: 1px solid #2a2a2a;
+    }
+
+    .dots{
+        display: flex;
+        gap: 8px;
+        align-items: center;
+    }
+
+    .dots span{
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        display: inline-block;
+    }
+
+    .red{
+        background: #ff5f57;
+    }
+
+    .yellow{
+        background: #febc2e;
+    }
+
+    .green{
+        background: #28c840;
+    }
+
+    .dots span:hover{
+        filter: brightness(1.2);
+        transform: scale(1.05);
+        cursor: pointer;
     }
     .code{
-        font-size: 100px;
+        padding-left: 10px;
+        font-size: 50px;
+        font-family: Consolas, Monaco, 'Courier New', monospace;
+        color: #aaaaaa;
+    }
+
+    .mainPageButton{
+        padding-top: 2.5rem;
+    }
+
+    .modernButton {
+        color: rgb(34, 34, 34);
+        font-size: 18px;
+        text-decoration: none;
+        background-color: #b6b6b6;
+        transition:background-color 0.55s;
+        border-radius: 10px;
+        padding: 10px;
+    }
+
+    .modernButton:hover{
+        background-color: rgb(235, 235, 235);
     }
 </style>
 
@@ -119,6 +166,26 @@
 </header>
 <main id="main-content">
     <div class = "notepad">
-        <p class = "code">{typedChars}</p>
+        <div class="window-bar">
+            <div class="dots">
+            <span class="red"></span>
+            <span class="yellow"></span>
+            <span class="green"></span>
+            </div>
+        </div>
+
+        <p class = "code">{text}<span class = "auto-type"></span></p>
     </div>
+    <script src = "https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script>
+        var typed = new Typed(".auto-type", {
+            strings: ["Adam Ho<br>> Computer Science Student<br>> Math Supplemental Instruction Leader"],
+            typeSpeed: 20,
+            loop: false
+        });
+    </script>
+    <div class = "mainPageButton">
+        <a class = "modernButton">Explore Me!</a>
+    </div>
+
 </main>
