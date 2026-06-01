@@ -48,7 +48,7 @@
 </script>
 <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
 <style>
-    body {
+    .bodyPage {
         min-height: 100vh;
         display: flex;
         flex-direction: column;
@@ -223,7 +223,7 @@
     }
 
 </style>
-<body>
+<div class = "bodyPage">
     <header>
         <h1>
             <a href = "/" class = "titleLink">Adam Ho</a>
@@ -274,4 +274,4 @@
     <footer>
         <p>2026 FarmerAKH</p>
     </footer>
-</body>
+</div>
