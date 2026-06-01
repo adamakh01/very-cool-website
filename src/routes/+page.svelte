@@ -52,6 +52,8 @@
         min-height: 100vh;
         display: flex;
         flex-direction: column;
+        overflow-x: hidden;
+        box-sizing: border-box;
     }
     header{
         display: flex;
@@ -59,8 +61,8 @@
         align-items: center;
         position:fixed;
         top:0;
-        width:100vw;
-        max-width: 100vw;
+        width:100%;
+        max-width: 100%;
         height:6rem;
         background:#000000;
         align-items: center;
@@ -113,8 +115,21 @@
         align-items: center;
         background: linear-gradient(to bottom, #000000 95%, #b6b6b6 100%);
         color: #F6F6F6;
-        height: 85vw;
-        width: 100vw;
+        /* limit the main content to the viewport minus header */
+        max-height: calc(100vh - 6rem);
+        width: 100%;
+        overflow-y: auto;
+        box-sizing: border-box;
+    }
+
+    :global(html, body, #svelte) {
+        height: 100%;
+    }
+
+    :global(body) {
+        margin: 0;
+        overflow-x: hidden;
+        /* let the body scroll vertically if needed */
         overflow-y: auto;
     }
 
@@ -123,7 +138,7 @@
         display: flex;
         flex-direction: column;
         width: clamp(400px, 80vw, 1500px);
-        height: clamp(150px, 100vh, 700px);
+        height: clamp(150px, 100vh, 600px);
         background: #323437;
         border: 1px solid #313131;
         border-radius: 16px;
@@ -198,7 +213,7 @@
     }
 
     .mainPageButton{
-        padding-top: 2.5rem;
+        padding-top: 2rem;
     }
 
     .modernButton {
