@@ -27,8 +27,13 @@ export const detailedAbout = {
     "generalAbout" : "",
     "professionally" : {
         "supplementalInstruction": {
-            "overview": "",
-            "bulletPoints": []
+            "title": "Supplemental Instruction @ CSUF",
+            "overview": "Facilitated Peer-Study Sessions for Business Calculus and Calc II Students.",
+            "active" : "Active since August 2025",
+            "bulletPoints": ["Host workshops for students to help them better engage with the material learned from the lecture.",
+                             "Create engaging activities that promote group work for better productivity.",
+                             "Increase students' grades by +10% when attending sessions regularly."
+            ]
         },
         "ulctutor": {
             "overview": "",
