@@ -89,10 +89,13 @@
     a.nav-link{
         color: rgb(129, 129, 129);
         font-size: 18px;
+        font-family: 'Space Grotesk', sans-serif;
+        letter-spacing: -0.02em;
         text-decoration: none;
         transition:background-color 0.55s;
         padding: 10px;
         border-radius: 10px;
+        white-space: nowrap; 
     }
     a.nav-link:hover{
         background-color:#3d3d3d;
@@ -102,6 +105,7 @@
     }
 
     .titleLink {
+        padding-left: 10px;
         left:10px;
         position:relative;
         margin:0;
@@ -109,12 +113,13 @@
         font-family: 'Space Grotesk', sans-serif;
         letter-spacing: -0.02em;
         font-weight:bold;
-        font-size:50px;
+        font-size: clamp(5px, 9vw, 50px);
+        white-space: nowrap; 
     }
 
     main#main-content {
         flex: 1;
-        margin-top: 7rem;
+        margin-top: 8rem;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -143,7 +148,7 @@
         display: flex;
         flex-direction: column;
         width: clamp(250px, 80vw, 1500px);
-        height: clamp(350px, 75dvh, 600px);
+        height: clamp(400px, 75dvh, 600px);
         background: #323437;
         border: 1px solid #313131;
         border-radius: 10px;
@@ -196,14 +201,19 @@
     .toast {
         position: fixed;
 
-        /* adjust to sit below your header */
+        font-family: 'Space Grotesk', sans-serif;
+        letter-spacing: -0.02em;
         top: 120px;
         right: 20px;
 
         padding: 12px 16px;
         border-radius: 8px;
 
-        background: #222;
+        background: rgba(8, 9, 10, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
         color: white;
 
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
@@ -230,6 +240,8 @@
         transition:background-color 0.55s;
         border-radius: 10px;
         padding: 10px;
+        font-family: 'Space Grotesk', sans-serif;
+        letter-spacing: -0.02em;
     }
 
     .modernButton:hover{
@@ -267,7 +279,7 @@
 <div class = "bodyPage">
     <header>
         <h1>
-            <a href = "/" class = "titleLink">Adam Ho</a>
+            <a href = "/" class = "titleLink">I'm Adam</a>
         </h1>
         <div class = "nav-link-wrapper">
             <a href="/about" class="nav-link">About Me</a>

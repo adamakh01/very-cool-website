@@ -23,5 +23,25 @@ export const randomFactsAboutMe = [
 ];
 
 //about me
-
+export const detailedAbout = {
+    "generalAbout" : "",
+    "professionally" : {
+        "supplementalInstruction": {
+            "overview": "",
+            "bulletPoints": []
+        },
+        "ulctutor": {
+            "overview": "",
+            "bulletPoints": []
+        },
+    },
+    "community" : {
+        "opensource" : {
+            "overview": "",
+            "bulletPoints": []     
+        }
+    },
+    "myTastes" : {
+    } 
+};
 //projects
