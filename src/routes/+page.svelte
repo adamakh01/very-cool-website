@@ -2,6 +2,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
 <script> 
+    import {aboutMe, professional, randomFactsAboutMe} from '$lib/components/data.js'
 	// Define your website's available inner pages
 	const pages = ['/about', '/projects'];
 
@@ -21,29 +22,28 @@
     let toastId = 0;
     let timeoutId;
     
-    const personMe = [
-        'I am a Computer Science Major!',
-        'I am currently learning Flutter!',
-        'I want get into more backend development.', 
-        'I was an Open Source ACM Board member!',
-        'I was a project lead for Open Source Stats!',
-        'I have previously assisted students in Business Calculus and Calc II.',
-        'I have been doing supplemental instruction for 2 semesters!',
-        'I love my friends! I enjoy spending time with them.',
-        'Originally an Oregonian!',
-        'Previous VALORANT Addict',
-        'Thank you for exploring my portfolio! :D']
-
-    function showMessage(text) {
+    function showMessage() {
         clearTimeout(timeoutId);
-        let randomIndex = Math.floor(Math.random() * personMe.length);
-        let randomMessage = personMe[randomIndex];
+        let randomIndex = Math.floor(Math.random() * list.length);
+        let randomMessage = list[randomIndex];
         message = randomMessage;
         toastId += 1;
 
         timeoutId = setTimeout(() => {
             message = '';
         }, 2000);
+    }
+
+    let list = [];
+    function setList(num) {
+        if (num == 1) {
+            list = aboutMe;
+        } else if (num == 2) {
+            list = professional;
+        } else if (num == 3) {
+            list = randomFactsAboutMe;
+        }
+        showMessage();
     }
 </script>
 <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
@@ -54,6 +54,7 @@
         flex-direction: column;
         overflow-x: hidden;
         box-sizing: border-box;
+        background-color: black;
     }
     header{
         display: flex;
@@ -64,7 +65,11 @@
         width:100%;
         max-width: 100%;
         height:6rem;
-        background:#000000;
+        background: rgba(8, 9, 10, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
         align-items: center;
         z-index:10;
         gap: 1.2rem;
@@ -109,17 +114,17 @@
 
     main#main-content {
         flex: 1;
-        margin-top: 6rem;
+        margin-top: 7rem;
         display: flex;
         flex-direction: column;
         align-items: center;
         background: linear-gradient(to bottom, #000000 95%, #b6b6b6 100%);
         color: #F6F6F6;
-        /* limit the main content to the viewport minus header */
-        max-height: calc(100vh - 6rem);
+
         width: 100%;
-        overflow-y: auto;
+        overflow: hidden; /* 👈 change from auto to hidden */
         box-sizing: border-box;
+        padding-bottom: 3rem;
     }
 
     :global(html, body, #svelte) {
@@ -137,17 +142,18 @@
         position: relative;
         display: flex;
         flex-direction: column;
-        width: clamp(400px, 80vw, 1500px);
-        height: clamp(150px, 100vh, 600px);
+        width: clamp(250px, 80vw, 1500px);
+        height: clamp(350px, 75dvh, 600px);
         background: #323437;
         border: 1px solid #313131;
-        border-radius: 16px;
+        border-radius: 10px;
 
     }
 
     .window-bar{
         height: 40px;
         display: flex;
+        flex: 0 0 40px;
         align-items: center;
         padding: 0 12px;
         background: linear-gradient(#1b1b1b, #151515);
@@ -231,12 +237,32 @@
     }
 
     footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         background: #b6b6b6;
         color: white;
         text-align: center;
-        padding: 1rem;
+        padding: 0.5rem;
     }
 
+    .footerText {
+        color: black;
+        font-family: 'Space Grotesk', sans-serif;
+        letter-spacing: -0.02em;
+        font-size: 13px;
+    }
+    .socialLink{
+        font-family: 'Space Grotesk', sans-serif;
+        letter-spacing: -0.02em;
+        color: black;
+        font-size: 13px;
+        transition:color 0.55s;
+        margin-right: 10px;
+    }
+    .socialLink:hover{
+        color: gray;
+    }
 </style>
 <div class = "bodyPage">
     <header>
@@ -254,13 +280,13 @@
                 <div class="dots">
                     <!-- svelte-ignore a11y_click_events_have_key_events -->
                     <!-- svelte-ignore a11y_no_static_element_interactions -->
-                    <span class="red" onclick={showMessage('hi')}></span>
+                    <span class="red" onclick={setList(1)}></span>
                     <!-- svelte-ignore a11y_click_events_have_key_events -->
                     <!-- svelte-ignore a11y_no_static_element_interactions -->
-                    <span class="yellow" onclick={showMessage('Minimize clicked')}></span>
+                    <span class="yellow" onclick={setList(2)}></span>
                     <!-- svelte-ignore a11y_click_events_have_key_events -->
                     <!-- svelte-ignore a11y_no_static_element_interactions -->
-                    <span class="green" onclick={showMessage('Maximize clicked')}></span>
+                    <span class="green" onclick={setList(3)}></span>
                 </div>
             </div>
 
@@ -287,6 +313,14 @@
 
     </main>
     <footer>
-        <p>2026 FarmerAKH</p>
+        <p class = "footerText">© 2026 FarmerAKH - Made with 🔥</p>
+        <div class = "social-wrapper">
+            <a href="https://www.linkedin.com/in/adam-ho-a65786202" class="socialLink" target="_blank">
+                LinkedIn
+            </a>
+            <a href="https://github.com/adamakh01" class="socialLink" target="_blank">
+                GitHub
+            </a>
+        </div>
     </footer>
 </div>
