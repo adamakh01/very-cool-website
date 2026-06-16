@@ -113,7 +113,7 @@
         font-family: 'Space Grotesk', sans-serif;
         letter-spacing: -0.02em;
         font-weight:bold;
-        font-size: clamp(5px, 9vw, 50px);
+        font-size: clamp(5px, 6vw, 50px);
         white-space: nowrap; 
     }
 
