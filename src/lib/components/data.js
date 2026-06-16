@@ -24,7 +24,11 @@ export const randomFactsAboutMe = [
 
 //about me
 export const detailedAbout = {
-    "generalAbout" : "",
+    "generalAbout" : {"Hi, my name is Adam": {
+        "year": "I am currently a junior @CSUF.",
+        "hobbies": "Video Games, Binging TV, Learning New Things",
+        "games": "VALORANT, Marvel Rivals, Fortnite, Minecraft"
+    }},
     "professionally" : {
         "supplementalInstruction": {
             "title": "Supplemental Instruction @ CSUF",
