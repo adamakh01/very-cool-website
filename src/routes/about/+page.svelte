@@ -139,15 +139,29 @@
         align-items: center;
         position: relative;
         width: clamp(250px, 80vw, 1500px);
-        min-height: clamp(400px, 75dvh, 600px);
+        min-height: clamp(400px, 75dvh, 550px);
         height: auto;
         flex-wrap: wrap;
         font-family: Arial, Helvetica, sans-serif;
         padding: 1rem;
     }
 
+    .professionalElement{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        position: relative;
+        width: clamp(250px, 80vw, 1500px);
+        min-height: clamp(200px, 75dvh, 300px);
+        height: auto;
+        flex-wrap: wrap;
+        font-family: Arial, Helvetica, sans-serif;
+        padding-top: 0.5rem;
+    }
+
     .aboutText {
         display: flex;
+        font-family: 'Space Grotesk', sans-serif;
         flex-direction: column;
         gap: 0.5rem;
         margin-left: 3.5rem;
@@ -159,8 +173,24 @@
         flex-direction: column;
         margin-top: 35px;
         font-family: 'Space Grotesk', sans-serif;
-        font-size: clamp(15px, 80vw, 55px);
+        font-size: clamp(35px, 80vw, 55px);
         padding-left: 10px;
+    }
+
+    .subTitleElement{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 35px;
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: clamp(15px, 80vw, 35px);
+        padding-left: 10px;
+    }
+
+    .subsubTitleElement{
+        margin-top: 35px;
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: clamp(15px, 80vw, 35px);
     }
 
     .listAbout{
@@ -168,11 +198,28 @@
         flex-direction: column;
     }
 
+    .modernButton {
+        color: rgb(34, 34, 34);
+        font-size: 18px;
+        text-decoration: none;
+        background-color: #b6b6b6;
+        transition:background-color 0.55s;
+        border-radius: 10px;
+        padding: 10px;
+        font-family: 'Space Grotesk', sans-serif;
+        letter-spacing: -0.02em;
+    }
+
+    .modernButton:hover{
+        background-color: rgb(235, 235, 235);
+    }
+
     .pfp {
         width: 250px;
         height: 250px;
         object-fit: cover;
         border-radius: 50%;
+        margin-left: 2rem;
         margin-right: 5rem;
     }
 
@@ -225,6 +272,64 @@
     .socialLink:hover{
         color: gray;
     }
+
+    .overview {
+        font-size: 20px;
+    }
+
+    .listElement {
+        padding-bottom: 1rem;
+    }
+    .horizontal-line {
+        border: none;
+        height: 2px;
+        background-color: #333;
+        width: 100%;  
+    }
+
+    .infoContainer {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        align-content: center;
+        align-items: center;
+        padding-bottom: 5rem;
+    }
+
+    .techLogos {
+        overflow: hidden;
+        width: 100%;
+        padding: 20px 0;
+        white-space: nowrap;
+    }
+
+    .scroll-track {
+        display: flex;
+        width: max-content;
+        animation: scroll 20s linear infinite;
+    }
+
+    .scroll-track:hover {
+        animation-play-state: paused;
+    }
+
+    .scroll-track img {
+        height: 200px;
+        width: auto;
+        margin: 0 15px;
+        border-radius: 8px;
+        object-fit: cover;
+        padding-right: 10px;
+    }
+
+    @keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    95% {
+        transform: translateX(-50%);
+    }
+    }
 </style>
 <div class = "bodyPage">
     <header>
@@ -242,15 +347,69 @@
                 <p class = "titleElement">{Object.keys(detailedAbout["generalAbout"])}</p>
                 <ul class = "listAbout">
                     <li class = "listElement">{detailedAbout["generalAbout"]["Hi, my name is Adam"]["year"]}</li>
-                    <li class = "listElement">{detailedAbout["generalAbout"]["Hi, my name is Adam"]["hobbies"]}</li>
-                    <li class = "listElement">{detailedAbout["generalAbout"]["Hi, my name is Adam"]["games"]}</li>
+                    <li class = "listElement">Hobbies: {detailedAbout["generalAbout"]["Hi, my name is Adam"]["hobbies"]}</li>
+                    <li class = "listElement">Games I love: {detailedAbout["generalAbout"]["Hi, my name is Adam"]["games"]}</li>
                 </ul>
             </div>
             <img class="pfp" src="/images/aboutImages/pfp.jpg" alt="pfp">
         </div>
+        <div class = "infoContainer">
+            <p class = "subTitleElement">Professional Experience</p>
+            <hr class="horizontal-line">
+            {#each detailedAbout["professionally"] as item}
+                <div class="professionalElement" style="border-color: {item.color}">
+                    <div class = "aboutText">
+                        <p class = "subsubTitleElement">{item.title}</p>
+                        <p class = "overview">Overview: {item.overview}</p>
+                        <p>{item.active}</p>
+                        <ul class = "listAbout">
+                            {#each item.bulletPoints as point}
+                                <li class = "listElement">{point}</li>
+                            {/each}
+                        </ul>
+                    </div>
+                    <div style = "display: flex; position: relative; align-items: center; flex-direction: column; margin-top: 2.5rem;">
+                        <img class="pfp" style= "margin-left: 0px; margin-right: 0px" src={item.image} alt="pfp">
+                        <div class = "mainPageButton" style = "padding-top: 5rem; padding-bottom: 20px; margin-right: 1.5rem; ">
+                            <a href={item.link} onclick={item} class = "modernButton">Learn more!</a>
+                        </div>
+                    </div>
+                </div>
+            {/each}
+            <p class = "subTitleElement" style = "margin-top: 100px">Community</p>
+            <hr class="horizontal-line">
+            {#each detailedAbout["community"] as item}
+                <div class="professionalElement" style="border-color: {item.color}">
+                    <div class = "aboutText">
+                        <p class = "subsubTitleElement">{item.title}</p>
+                        <p class = "overview">Overview: {item.overview}</p>
+                        <p>{item.active}</p>
+                        <ul class = "listAbout">
+                            {#each item.bulletPoints as point}
+                                <li class = "listElement">{point}</li>
+                            {/each}
+                        </ul>
+                    </div>
+                    <div style = "display: flex; position: relative; align-items: center; flex-direction: column; margin-top: 2.5rem;">
+                        <img class="pfp" style= "margin-left: 0px; margin-right: 0px" src={item.image} alt="pfp">
+                        <div class = "mainPageButton" style = "padding-top: 5rem; padding-bottom: 20px; margin-right: 1.5rem; ">
+                            <a href={item.link} onclick={item} class = "modernButton">Learn more!</a>
+                        </div>
+                    </div>
+                </div>
+            {/each}
+            <p class = "subTitleElement" style = "margin-top: 100px">Technologies!</p>
+            <div class="techLogos">
+                <div class = "scroll-track">
+                    {#each detailedAbout["techStack"] as image}
+                        <img src = {image.image} alt = {image.alt}>
+                    {/each}
+                </div>
+            </div>
+        </div>
     </main>
     <footer>
-        <p class = "footerText">© 2026 FarmerAKH - Made with 🔥</p>
+        <p class = "footerText">© 2026 FarmerAKH - Made with AWESOMENESS</p>
         <div class = "social-wrapper">
             <a href="https://www.linkedin.com/in/adam-ho-a65786202" class="socialLink" target="_blank">
                 LinkedIn

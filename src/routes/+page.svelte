@@ -325,7 +325,7 @@
 
     </main>
     <footer>
-        <p class = "footerText">© 2026 FarmerAKH - Made with 🔥</p>
+        <p class = "footerText">© 2026 FarmerAKH - Made with AWESOMENESS</p>
         <div class = "social-wrapper">
             <a href="https://www.linkedin.com/in/adam-ho-a65786202" class="socialLink" target="_blank">
                 LinkedIn
