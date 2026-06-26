@@ -3,44 +3,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
 <script> 
     import {detailedAbout} from '$lib/components/data.js'
-
-
-	// Pick a fresh random page so subsequent clicks route elsewhere
-	function updateRandomPage() {
-		const alternativePages = pages.filter(p => p !== randomHref);
-		const randomIndex = Math.floor(Math.random() * alternativePages.length);
-		randomHref = alternativePages[randomIndex];
-	}
-    let text = "> ";
-    import { fade, fly } from 'svelte/transition';
-
-    let message = '';
-    let toastId = 0;
-    let timeoutId;
-    
-    function showMessage() {
-        clearTimeout(timeoutId);
-        let randomIndex = Math.floor(Math.random() * list.length);
-        let randomMessage = list[randomIndex];
-        message = randomMessage;
-        toastId += 1;
-
-        timeoutId = setTimeout(() => {
-            message = '';
-        }, 2000);
-    }
-
-    let list = [];
-    function setList(num) {
-        if (num == 1) {
-            list = aboutMe;
-        } else if (num == 2) {
-            list = professional;
-        } else if (num == 3) {
-            list = randomFactsAboutMe;
-        }
-        showMessage();
-    }
 </script>
 <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
 <style>
@@ -131,32 +93,71 @@
         transform: translateY(30px);
         animation: fadeInUp 0.6s ease-out forwards;
     }
-
-    .aboutElement{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        position: relative;
-        width: clamp(250px, 80vw, 1500px);
-        min-height: clamp(400px, 75dvh, 550px);
-        height: auto;
-        flex-wrap: wrap;
-        font-family: Arial, Helvetica, sans-serif;
-        padding: 1rem;
+    @media screen and (min-width: 867px) {
+        .aboutElement{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            width: clamp(250px, 80vw, 1500px);
+            min-height: clamp(400px, 75dvh, 550px);
+            height: auto;
+            flex-wrap: wrap;
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 1rem;
+        }
     }
 
-    .professionalElement{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        position: relative;
-        width: clamp(250px, 80vw, 1500px);
-        min-height: clamp(200px, 75dvh, 300px);
-        height: auto;
-        flex-wrap: wrap;
-        font-family: Arial, Helvetica, sans-serif;
-        padding-top: 0.5rem;
+    @media screen and (max-width: 866px) {
+        .aboutElement{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-content: center;
+            align-items: center;
+            position: relative;
+            width: clamp(8vw, 1000px);
+            min-height: clamp(400px, 75dvh, 550px);
+            height: auto;
+            flex-wrap: wrap;
+            font-family: Arial, Helvetica, sans-serif;
+            padding: 1rem;
+        }
+    }
+
+    @media screen and (min-width: 675px) {
+        .professionalElement{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            position: relative;
+            width: clamp(250px, 80vw, 1500px);
+            min-height: clamp(200px, 75dvh, 300px);
+            height: auto;
+            flex-wrap: wrap;
+            font-family: Arial, Helvetica, sans-serif;
+            padding-top: 0.5rem;
+            transition: all 0.3s ease; 
+        }
+    }
+    @media screen and (max-width: 674px) {
+        .professionalElement{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            width: clamp(250px, 80vw, 1500px);
+            min-height: clamp(200px, 75dvh, 300px);
+            height: auto;
+            flex-wrap: wrap;
+            font-family: Arial, Helvetica, sans-serif;
+            padding-top: 0.5rem;
+            transition: all 0.3s ease; 
+        }
+    }
+    .professionalElement:hover{
+        transform: scale(1.05); 
     }
 
     .aboutText {
@@ -183,7 +184,7 @@
         align-items: center;
         margin-top: 35px;
         font-family: 'Space Grotesk', sans-serif;
-        font-size: clamp(15px, 80vw, 35px);
+        font-size: clamp(25px, 3vw, 35px);
         padding-left: 10px;
     }
 
@@ -301,6 +302,7 @@
         width: 100%;
         padding: 20px 0;
         white-space: nowrap;
+        margin-bottom: 250px;
     }
 
     .scroll-track {
@@ -314,7 +316,7 @@
     }
 
     .scroll-track img {
-        height: 200px;
+        height: clamp(100px, 2vh, 200px);
         width: auto;
         margin: 0 15px;
         border-radius: 8px;
@@ -324,10 +326,10 @@
 
     @keyframes scroll {
     0% {
-        transform: translateX(0);
+        transform: translateX(100%);
     }
-    95% {
-        transform: translateX(-50%);
+    100% {
+        transform: translateX(-100%);
     }
     }
 </style>
