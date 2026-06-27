@@ -291,13 +291,13 @@
                 <div class="dots">
                     <!-- svelte-ignore a11y_click_events_have_key_events -->
                     <!-- svelte-ignore a11y_no_static_element_interactions -->
-                    <span class="red" onclick={setList(1)}></span>
+                    <span class="red" onclick={() => setList(1)}></span>
                     <!-- svelte-ignore a11y_click_events_have_key_events -->
                     <!-- svelte-ignore a11y_no_static_element_interactions -->
-                    <span class="yellow" onclick={setList(2)}></span>
+                    <span class="yellow" onclick={() => setList(2)}></span>
                     <!-- svelte-ignore a11y_click_events_have_key_events -->
                     <!-- svelte-ignore a11y_no_static_element_interactions -->
-                    <span class="green" onclick={setList(3)}></span>
+                    <span class="green" onclick={() => setList(3)}></span>
                 </div>
             </div>
 
