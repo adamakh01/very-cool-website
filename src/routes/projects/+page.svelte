@@ -1,33 +1,39 @@
-<script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+<script> 
+    import {projects} from '$lib/components/data.js'
 </script>
 <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
 <style>
+    .bodyPage {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        overflow-x: hidden;
+        box-sizing: border-box;
+        background-color: black;
+    }
     header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         position:fixed;
         top:0;
-        width:100vw;
-        max-width: 100vw;
+        width:100%;
+        max-width: 100%;
         height:6rem;
-        background:#223A70;
-        display:flex;
+        background: rgba(8, 9, 10, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
         align-items: center;
         z-index:10;
         gap: 1.2rem;
         overflow:hidden;
         padding-right:0.8rem;
         box-sizing:border-box;
-    }
-    h1{
-        background-color:#445b94;
-        border-radius: 10px;
-        left:15px;
-        position:relative;
-        margin:0;
-        padding:0;
-        color:#a8a9ad;
-        font-family: 'Roboto', sans-serif;
-        font-weight:bold;
-        font-size:50px;
     }
     a{
         left: 10px;
@@ -39,276 +45,220 @@
         transition: color 0.55s;
     }
     a.nav-link{
+        color: rgb(129, 129, 129);
+        font-size: 18px;
+        font-family: 'Space Grotesk', sans-serif;
+        letter-spacing: -0.02em;
         text-decoration: none;
-        transition:color 0.55s;
+        transition:background-color 0.55s;
+        padding: 10px;
+        border-radius: 10px;
+        white-space: nowrap;
     }
     a.nav-link:hover{
-        color:#F6F6F6;
-        text-decoration:underline;
-        text-decoration-color:#F6F6F6;
+        background-color:#3d3d3d;
     }
-    .activeLink{
-        left: 10px;
+    .nav-link-wrapper{
+        padding-right: 10px;
+    }
+
+    .titleLink {
+        padding-left: 10px;
+        left:10px;
         position:relative;
-        text-decoration: none;
-        font-family: Arial, Helvetica, sans-serif;
-        color:rgba(255, 255, 255, 0.685);
-        font-size: 20px;
-        transition: color 0.55s;
+        margin:0;
+        color:#ffffff;
+        font-family: 'Space Grotesk', sans-serif;
+        letter-spacing: -0.02em;
+        font-weight:bold;
+        font-size: clamp(5px, 6vw, 50px);
+        white-space: nowrap; 
     }
-    .nav-link-wrapper {
-        display: flex;
-        gap: 1rem;
-        align-items: center;
-    }
-    .nav-icons-wrapper {
-        margin-left: auto;
-        display: flex;
-        gap: 0.5rem;
-        align-items: center;
-    }
-    .nav-icons-wrapper-mobile{
-        display:none;
-    }
-    .nav-image {
-        display: block;
-        width: 2.5rem;
-        height: 2.5rem;
-        cursor: pointer;
-    }
+
     main#main-content {
-        overflow-y: auto;
-        overflow-x: hidden;
-        height: calc(100vh - 6rem);
+        flex: 1;
+        margin-top: 8rem;
         display: flex;
         flex-direction: column;
-        justify-content: flex-start;
         align-items: center;
-        padding-top: 2rem;
-        background: #526fb1;
+        background: linear-gradient(to bottom, #000000 95%, #b6b6b6 100%);
         color: #F6F6F6;
-        position: fixed;
-        height: calc(100vh - 6rem);
-        width: 100vw;
-        top: 6rem;
-        left: 0;
-        background:repeating-linear-gradient(
-            135deg,
-            #526fb1,
-            #526fb1 40px,
-            #445b94 40px,
-            #445b94 42px
-        );
-    }
-    .projectFrame {
-        display:flex;
-        flex-direction:column;
-        justify-content: center;
-        position:relative;
+        width: 100%;
+        overflow: hidden;
         box-sizing: border-box;
-        width:500px;
-        height:auto;
-        font-family: Arial, Helvetica, sans-serif;
-        background-color:#445b94;
-        border-radius:2rem;
-        text-align:center;
-        padding: 1rem;
-        margin-bottom:2.5rem;
-        box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.5);
-        transition: transform 0.4s ease-in-out;
+        padding-bottom: 3rem;
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeInUp 0.6s ease-out forwards;
     }
-    .projectFrame:hover{
-        transform: scale(1.05);
+
+    @media screen and (min-width: 1297px) {
+        .projectContainer {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            margin-top:10px;
+            gap: 20px;
+            padding-bottom: 5rem;
+        }
     }
-    .projectDescription {
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 18px;
-        line-height: 1.5;
-        color: #F6F6F6;
+
+    @media screen and (max-width: 1296px) {
+        .projectContainer {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            margin-top:10px;
+            gap: 20px;
+            padding-bottom: 5rem;
+        }
     }
+
+
+    .project {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #11111157;
+        height: 35rem;
+        width: 25rem;
+        transition: transform 0.3s ease, border-color 0.3s ease-in-out; 
+        border: 2px solid black;
+        border-radius: 10px;
+    }
+
+
+    .project:hover {
+        transform: translateY(-10px); 
+        border-color: rgb(49, 49, 49);
+    }
+
     .projectTitle {
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 30px;
-        font-weight: bold;
-        color: #d1d3d8;
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: clamp(15px, 70vw, 35px);
+    }
+
+    @media screen and (max-width: 875px) {
+        .projectContainer {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            margin-top:10px;
+            gap: 20px;
+            padding-bottom: 5rem;
+        }
+        .project {
+            display:flex;
+            width: 22rem;
+        }
+        .projectTitle{
+            font-size: 30px;
+        }
+
+    }
+
+    .description {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 16px;
+    }
+
+    .modernButton {
+        color: rgb(34, 34, 34);
+        font-size: 18px;
         text-decoration: none;
-        transition:color 0.3s;
+        background-color: #b6b6b6;
+        transition:background-color 0.55s;
+        border-radius: 10px;
+        padding: 10px;
+        font-family: 'Space Grotesk', sans-serif;
+        letter-spacing: -0.02em;
     }
-    .projectTitle:hover {
-        color: #F6F6F6;
-        text-decoration: underline;
-        text-decoration-color: #F6F6F6;
+
+    .modernButton:hover{
+        background-color: rgb(235, 235, 235);
     }
-    .projectImage{
-        margin-top: 0.5rem;
-    }
-    .projectDescription{
-        margin-top:3rem;
-    }
-    @media(min-width:768px){
-        .dropbtn{
-            display:none;
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
         }
-        .dropdown{
-            display:none;
-        }
-        .dropdown-content{
-            display:none;
+        to {
+            opacity: 1;
+            transform: translateY(0);
         }
     }
-    @media (max-width:767px){
-        header {
-            min-width:320px;
-            overflow:visible;
-            justify-content: space-between;
-        }
-        h1{
-            font-size:30px;
-        }
-        .nav-link-wrapper {
-            display:none;
-        }
-        .nav-icons-wrapper{
-            display:none;
-        }
-        .dropbtn {
-            background-color: #223A70;
-            color: white;
-            padding: 16px;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-            transition:color 0.15s, background 0.55s;
-        }
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            right:0px;
-            background-color: #526fb1;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-        .dropdown-content a {
-            color: rgb(255, 255, 255);
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-        .dropdown-content a:hover {background-color: #526fb1; width:fit-content;}
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-        .dropdown:hover, .dropbtn {
-            background-color: #243c74;
-        }
-        .nav-icons-wrapper-mobile{
-            margin-top:5px;
-            display:flex;
-            flex-direction:row;
-            position:relative;
-            margin-top:5rem;
-            margin-bottom:5rem;
-        }
+
+    :global(html, body, #svelte) {
+        height: 100%;
     }
-    @media (max-width:768px) {
-        main#main-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .projectFrame {
-            display:flex;
-            flex-direction:column;
-            justify-content: center;
-            position:relative;
-            top:1rem;
-            box-sizing: border-box;
-            width:80%;
-            height:auto;
-            font-family: Arial, Helvetica, sans-serif;
-            background-color:#445b94;
-            border-radius:2rem;
-            text-align:center;
-            padding: 1rem;
-            left:5%;
-        }
+
+    :global(body) {
+        margin: 0;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #b6b6b6;
+        color: white;
+        text-align: center;
+        padding: 0.5rem;
+    }
+
+    .footerText {
+        color: black;
+        font-family: 'Space Grotesk', sans-serif;
+        letter-spacing: -0.02em;
+        font-size: 13px;
+    }
+    .socialLink{
+        font-family: 'Space Grotesk', sans-serif;
+        letter-spacing: -0.02em;
+        color: black;
+        font-size: 13px;
+        transition:color 0.55s;
+        margin-right: 10px;
+    }
+    .socialLink:hover{
+        color: gray;
     }
 </style>
-<header>
-    <h1>Adam Ho</h1>
-    <div class = "nav-link-wrapper">
-        <a href="/" class="nav-link">Home</a>
-        <a href="/about" class="nav-link activeLink">About Me</a>
-        <h2 class = "activeLink">Projects</h2>
-    </div>
-    <div class = "nav-icons-wrapper">
-        <a href="https://www.instagram.com/farmerakh/" class="nav-image" target="_blank">
-            <img src="/images/linkImages/instagram-white-icon.svg" alt="Instagram" style="width: 30px; height: 30px;">
-        </a>
-        <a href="https://www.linkedin.com/in/adam-ho-a65786202" class="nav-image" target="_blank">
-            <img src="\images\linkImages\linkedin-app-white-icon.svg" alt="LinkedIn" style="width: 30px; height: 30px;">   
-        </a>
-        <a href="https://github.com/adamakh01" class="nav-image" target="_blank">
-            <img src="\images\linkImages\github-mark-white.svg" alt="GitHub" style="width: 30px; height: 30px;">
-        </a>
-    </div>
-    <div class="dropdown">
-        <button class="dropbtn">&#9776</button>
-        <div class="dropdown-content">
-        <a href="/">Home</a>
-        <a href="/about">About Me</a>
-        <a href="/projects">Projects</a>
+<div class = "bodyPage">
+    <header>
+        <h1>
+            <a href = "/" class = "titleLink">I'm Adam</a>
+        </h1>
+        <div class = "nav-link-wrapper">
+            <a href="/about" class="nav-link">About Me</a>
+            <a href="/projects" class="nav-link" style = "color:rgb(184, 184, 184);">Projects</a>
         </div>
-    </div>
-</header>
-
-<main id="main-content">
-    <div class = "projectFrame">
-        <a href = "https://github.com/adamakh01/very-cool-website" class = "projectTitle" target="_blank">Adam Ho's Portfolio</a>
-        <img src = "/images/projectImages/AdamHoPortfolio.png" alt = "Adam Ho's Portfolio" class = "projectImage" style = "position:relative; top:6%; width: 100%; height: auto">
-        <p class = "projectDescription" style="font-family: Arial, Helvetica, sans-serif; font-size: 17px; line-height: 1.5;">
-            Portfolio website showcasing my projects and skills, as well as present my contact info. Built with Sveltekit (HTML, CSS, and JavaScript).
-        </p>
-    </div>
-    <div class = "projectFrame">
-        <a href = "https://github.com/adamakh01/Get-Legacy-Apps-Back-for-Windows-11" class = "projectTitle" target="_blank">Legacy Apps for Windows 11</a>
-        <img src = "/images/projectImages/LegacyApps.png" alt = "Get Legacy Apps Back for Windows 11" class = "projectImage" style = "position:relative; top:6%; width: 100%; height: auto">
-        <p class = "projectDescription" style="font-family: Arial, Helvetica, sans-serif; font-size: 17px; line-height: 1.5;">
-            A simple script that allows you to get the legacy Paint, Snipping Tool, and Math Input Panel back for Windows 11. Built using Python utilizing PowerShell commands.
-        </p>
-    </div>
-    <div class = "projectFrame">
-        <a href = "https://github.com/adamakh01/ACC-Tablet" class = "projectTitle" target="_blank">ACC Tablet</a>
-        <img src = "\images\projectImages\ACC Tablet.PNG" alt = "ACC Tablet" class = "projectImage" style = "position:relative; top:6%; left:15%; width: 70%; height: auto">
-        <p class = "projectDescription" style="font-family: Arial, Helvetica, sans-serif; font-size: 17px; line-height: 1.5;">
-            A silly little project I made while I was bored. Relatively incomplete.
-        </p>
-    </div>
-    <div class = "projectFrame">
-        <a href = "https://github.com/adamakh01/Grade-Calculator" class = "projectTitle" target="_blank">Grade Calculator</a>
-        <img src = "\images\projectImages\GradebookFiller.PNG" alt = "Grade Calculator" class = "projectImage" style = "position:relative; top:6%; left:32%; width: 35%; height: auto">
-        <p class = "projectDescription" style="font-family: Arial, Helvetica, sans-serif; font-size: 17px; line-height: 1.5;">
-            A simple grade calculator that allows you to input your grades and calculate your overall grade. Can be done for multiple classes.
-            Built using code.org and JavaScript.
-        </p>
-    </div>
-    <div class = "nav-icons-wrapper-mobile">
-        <a href="https://www.instagram.com/farmerakh/" class="nav-image" target="_blank">
-            <img src="/images/linkImages/instagram-white-icon.svg" alt="Instagram" style="width: 30px; height: 30px;">
-        </a>
-        <a href="https://www.linkedin.com/in/adam-ho-a65786202" class="nav-image" target="_blank">
-            <img src="\images\linkImages\linkedin-app-white-icon.svg" alt="LinkedIn" style="width: 30px; height: 30px;">   
-        </a>
-        <a href="https://github.com/adamakh01" class="nav-image" target="_blank">
-            <img src="\images\linkImages\github-mark-white.svg" alt="GitHub" style="width: 30px; height: 30px;">
-        </a>
-    </div>
-</main>
-<main>
-    <slot />
-</main>
+    </header>
+    <main id="main-content">
+        <div class = "projectContainer">
+            {#each projects as item}
+                <div class = "project">
+                    <h1 class = "projectTitle">{item.title}</h1>
+                    <p class = "description" style = "min-height: 225px; max-height: 225px; max-width: 300px">{item.description}</p>
+                    <div class = "techStack" style = "display: flex; flex-wrap: wrap; align-content: flex-start; column-gap: 10px; min-height: 125px; max-width: 300px; user-select: none; ">
+                        {#each item.techStack as tech}
+                            <p class = "techStackText" style = "background-color: black; border: 1.5px solid gray; padding: 2.5px; text-align: center; font-family: 'Space Grotesk', sans-serif; font-size: 13px; border-radius: 5px">{tech}</p>
+                        {/each}
+                    </div>
+                    <a href={item.githubLink} onclick={item} class = "modernButton" style = "margin-right:4%;">{item.githubLink.length === 0 ? 'GitHub not available.' : 'GitHub Repo'}</a>
+                </div>
+            {/each}
+        </div>
+    </main>
+    <footer>
+        <p class = "footerText">© 2026 FarmerAKH - Made with AWESOMENESS</p>
+        <div class = "social-wrapper">
+            <a href="https://www.linkedin.com/in/adam-ho-a65786202" class="socialLink" target="_blank">
+                LinkedIn
+            </a>
+            <a href="https://github.com/adamakh01" class="socialLink" target="_blank">
+                GitHub
+            </a>
+        </div>
+    </footer>
+</div>
