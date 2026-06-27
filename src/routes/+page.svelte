@@ -1,53 +1,81 @@
-<script>
-    let slideIndex = 0;
-    const images = [
-        { src: "/images/images/beachday.JPG", alt: "beachday" },
-        { src: "/images/images/ohsu.JPG", alt: "OHSU"},
-        { src: "/images/images/arthistoryproject.JPG", alt: "Art History 101 Project" },
-        { src: "/images/images/midwayMuseum.JPG", alt: "Midway Museum" },
-        { src: "/images/images/rainyDay.JPG", alt: "Rainy Day" }
-    ];
-    const captions = [
-        "Beach Day 2024!",
-        "Oregon Health and Science University",
-        "Art History 101 Photography Project",
-        "USS Midway Museum New Years 2025",
-        "Feels like Oregon"
-    ];
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Space+Grotesk:wght@400;600&display=swap" rel="stylesheet">
+<script> 
+    import {aboutMe, professional, randomFactsAboutMe} from '$lib/components/data.js'
+	// Define your website's available inner pages
+	const pages = ['/about', '/projects'];
 
-    function plusDivs(n) {
-        slideIndex = (slideIndex + n + images.length) % images.length;
-        captionIndex = (slideIndex + n + captions.length) % captions.length;
+	// Initialize the href with a random page choice
+	let randomHref = (pages[Math.floor(Math.random() * pages.length)]);
+
+	// Pick a fresh random page so subsequent clicks route elsewhere
+	function updateRandomPage() {
+		const alternativePages = pages.filter(p => p !== randomHref);
+		const randomIndex = Math.floor(Math.random() * alternativePages.length);
+		randomHref = alternativePages[randomIndex];
+	}
+    let text = "> ";
+    import { fade, fly } from 'svelte/transition';
+
+    let message = '';
+    let toastId = 0;
+    let timeoutId;
+    
+    function showMessage() {
+        clearTimeout(timeoutId);
+        let randomIndex = Math.floor(Math.random() * list.length);
+        let randomMessage = list[randomIndex];
+        message = randomMessage;
+        toastId += 1;
+
+        timeoutId = setTimeout(() => {
+            message = '';
+        }, 2000);
+    }
+
+    let list = [];
+    function setList(num) {
+        if (num == 1) {
+            list = aboutMe;
+        } else if (num == 2) {
+            list = professional;
+        } else if (num == 3) {
+            list = randomFactsAboutMe;
+        }
+        showMessage();
     }
 </script>
 <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
 <style>
+    .bodyPage {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        overflow-x: hidden;
+        box-sizing: border-box;
+        background-color: black;
+    }
     header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         position:fixed;
         top:0;
-        width:100vw;
-        max-width: 100vw;
+        width:100%;
+        max-width: 100%;
         height:6rem;
-        background:#223A70;
-        display:flex;
+        background: rgba(8, 9, 10, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
         align-items: center;
         z-index:10;
         gap: 1.2rem;
         overflow:hidden;
         padding-right:0.8rem;
         box-sizing:border-box;
-    }
-    h1{
-        background-color:#445b94;
-        border-radius: 10px;
-        left:15px;
-        position:relative;
-        margin:0;
-        padding:0;
-        color:#a8a9ad;
-        font-family: 'Roboto', sans-serif;
-        font-weight:bold;
-        font-size:50px;
     }
     a{
         left: 10px;
@@ -59,449 +87,252 @@
         transition: color 0.55s;
     }
     a.nav-link{
+        color: rgb(129, 129, 129);
+        font-size: 18px;
+        font-family: 'Space Grotesk', sans-serif;
+        letter-spacing: -0.02em;
         text-decoration: none;
-        transition:color 0.55s;
+        transition:background-color 0.55s;
+        padding: 10px;
+        border-radius: 10px;
+        white-space: nowrap; 
     }
     a.nav-link:hover{
-        color:#F6F6F6;
-        text-decoration:underline;
-        text-decoration-color:#F6F6F6;
+        background-color:#3d3d3d;
     }
-    .activeLink{
-        left: 10px;
+    .nav-link-wrapper{
+        padding-right: 10px;
+    }
+
+    .titleLink {
+        padding-left: 10px;
+        left:10px;
         position:relative;
-        text-decoration: none;
-        font-family: Arial, Helvetica, sans-serif;
-        color:rgba(255, 255, 255, 0.685);
-        font-size: 20px;
-        transition: color 0.55s;
+        margin:0;
+        color:#ffffff;
+        font-family: 'Space Grotesk', sans-serif;
+        letter-spacing: -0.02em;
+        font-weight:bold;
+        font-size: clamp(5px, 6vw, 50px);
+        white-space: nowrap; 
     }
-    .nav-link-wrapper {
-        display: flex;
-        gap: 1rem;
-        align-items: center;
-    }
-    .nav-icons-wrapper {
-        position:relative;
-        margin-left: auto;
-        display: flex;
-        gap: 0.5rem;
-        align-items: center;
-    }
-    .nav-icons-wrapper-mobile{
-        display:none;
-    }
-    .nav-image {
-        display: block;
-        width: 2.5rem;
-        height: 2.5rem;
-        cursor: pointer;
-    }
-    main{
-        top:10px;
-        position:fixed;
-        padding-top: 4rem;
-        background:#526fb1;
-        color:#F6F6F6;
-    }
+
     main#main-content {
-        position:absolute;
+        flex: 1;
+        margin-top: 8rem;
         display: flex;
-        flex-direction: row;  
-        padding-top: 0;
-        background: #526fb1;
-        color: #F6F6F6;
-        position: fixed;
-        height: calc(100vh - 6rem);
-        width: 100vw;
-        top: 6rem;
-        left: 0;
-        overflow-y: auto;
-        background:
-        repeating-linear-gradient(
-            135deg,
-            #526fb1,
-            #526fb1 40px,
-            #445b94 40px,
-            #445b94 42px
-        );
-    }
-    .intro{
-        position:relative;
-        left:55px;
-        box-sizing: border-box;
-        width:500px;
-        height:105px;
-        margin-top: 2rem;
-        font-family: Arial, Helvetica, sans-serif;
-        background-color:#445b94;
-        border-radius:2rem;
-        align-items: center;
-        text-align:center;
-        box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.5);
-        transition: transform 0.4s ease-in-out;
-    }
-    .introStatement{
-        padding-top:0.5rem;
-        font-size: 20px;
-        font-weight: bold;
-        color: #F6F6F6;
-    }
-    .intro:hover{
-        transform: scale(1.05);
-    }
-    .gallery{
-        position:fixed;
-        left:610px;
-        box-sizing: border-box;
-        width:1200px;
-        height:700px;
-        margin-top: 2rem;
-        font-family: Arial, Helvetica, sans-serif;
-        background-color:#445b94;
-        border-radius:2rem;
-        align-items: center;
-        text-align: center;
-        overflow: hidden;
-        box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.5);
-        transition: transform 0.4s ease-in-out;
-    }
-    .galleryPic {
-        width:70%;
-        position: absolute;
-        top:7%;
-        left: 15%;
-        display: block;
-        height: 70%;
-        object-fit: contain;
-        margin: 1.5rem auto 0 auto;
-    }
-    .gallery-left, .gallery-right {
-        position: relative;
-        top: 50%;
-        transform: translateY(-50%);
-        background:#223A70;
-        border-radius:2rem;
-        color: white;
-        border: none;
-        width:100px;
-        height:100px;
-        font-size:30px;
-        cursor: pointer;
-        transition:color 0.15s, background 0.55s;
-    }
-    .gallery-left:hover, .gallery-right:hover {
-        background: rgb(56, 83, 150);
-        color: #F6F6F6;
-    }
-    .gallery-left:active, .gallery-right:active {
-        background: rgb(37, 64, 133);
-        color: #F6F6F6;
-    }
-    .gallery-caption{
-        display:block;
-        position: absolute;
-        padding:1rem;
-        border-radius:2rem;
-        background:#223A70;
-        width:35rem;
-        height:60px;
-        text-align:center;
-        top:84%;
-        left:25.5%;
-    }
-    .recentProjects{
-        display:flex;
         flex-direction: column;
         align-items: center;
-        position:fixed;
-        left:55px;
-        top:28rem;
+        background: linear-gradient(to bottom, #000000 95%, #b6b6b6 100%);
+        color: #F6F6F6;
+        width: 100%;
+        overflow: hidden;
         box-sizing: border-box;
-        width:500px;
-        height:350px;
-        margin-top: 2rem;
-        font-family: Arial, Helvetica, sans-serif;
-        background-color:#445b94;
-        border-radius:2rem;
-        text-align:center;
-        padding: 1rem;
-        box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.5);
-        transition: transform 0.4s ease-in-out;
+        padding-bottom: 3rem;
     }
-    .recentProjects:hover{
-        transform:scale(1.05);
-    }
-    .basicInfo{
-        position:fixed;
-        left:55px;
-        top:14rem;
-        box-sizing: border-box;
-        width:500px;
-        height:200px;
-        margin-top: 2rem;
-        font-family: Arial, Helvetica, sans-serif;
-        background-color:#445b94;
-        border-radius:2rem;
-        text-align:center;
-        padding:1rem;
-        box-shadow: 5px 5px 10px 2px rgba(0, 0, 0, 0.5);
-        transition: transform 0.4s ease-in-out;
-    }
-    .basicInfo:hover{
-        transform:scale(1.05);
-    }
-    .occupationLink{
-        display:block;
-        margin-bottom:1rem;
-        text-decoration: none;
-        transition:color 0.55s;
-        font-size: 15px;
-        max-width: 92%;;
-        margin-left:0;
-        margin-right:0;
-    }
-    .occupationLink:hover{
-        color:#F6F6F6;
-        text-decoration:underline;
-        text-decoration-color:#F6F6F6;
-    }
-    @media(max-width:819px){
-        .gallery{
-            display:none;
-        }
-    }
-    @media(min-width:768px){
-        .dropbtn{
-            display:none;
-        }
-        .dropdown{
-            display:none;
-        }
-        .dropdown-content{
-            display:none;
-        }
-    }
-    @media(min-width:820px) and (max-width: 1700px) {
-        main#main-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            width: 100vw;
-        }
-        .intro, .basicInfo, .recentProjects {
-            position: relative;
-        }
-        .intro:hover, .recentProjects:hover {
-            transform:scale(1.05);
-        }
-        .intro{
-            position:relative;
-            top:0.5rem;
-        }
-        .basicInfo{
-            position:relative;
-            top:0.5rem;
-        }
-        .recentProjects{
-            position:relative;
-            top:0.5rem;
-            height:auto;
-        }
 
-        .gallery{
-            display:none;
-            position:absolute;
-            box-sizing: border-box;
-            top:43rem;
-            width:1200px;
-            height:700px;
-            margin-top: 2rem;
-            font-family: Arial, Helvetica, sans-serif;
-            background-color:#445b94;
-            border-radius:2rem;
-            align-items: center;
-            text-align: center;
-            overflow: hidden;
-        }
-        .gallery-left, .gallery-right {
-            position: absolute;
-            background:#223A70;
-            border-radius:2rem;
-            color: white;
-            border: none;
-            width:100px;
-            height:100px;
-            font-size:30px;
-            cursor: pointer;
-            transition:color 0.15s, background 0.55s;
-        }
-        .gallery-left{
-            left:-15px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-        .gallery-right {
-            right: -15px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
+    :global(html, body, #svelte) {
+        height: 100%;
     }
-    @media (max-width:760px) {
-        header {
-            min-width:320px;
-            overflow:visible;
-            justify-content: space-between;
-        }
-        h1{
-            font-size:30px;
-        }
-        .nav-link-wrapper {
-            display:none;
-        }
-        .nav-icons-wrapper{
-            display:none;
-        }
-        main#main-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .intro, .basicInfo, .recentProjects {
-            margin-right:auto;
-            width: 90%;
-            left: 5%;
-        }
-        .nav-icons-wrapper-mobile{
-            margin-top:16px;
-            display:flex;
-            flex-direction:row;
-            position:relative;
-            margin-top:5rem;
-            margin-bottom:5rem;
-        }
-        .dropbtn {
-            background-color: #223A70;
-            color: white;
-            padding: 16px;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-            transition:color 0.15s, background 0.55s;
-        }
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            right:0px;
-            background-color: #526fb1;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-        .dropdown-content a {
-            color: rgb(255, 255, 255);
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-        .dropdown-content a:hover {background-color: #526fb1; width:fit-content;}
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-        .dropdown:hover, .dropbtn {
-            background-color: #243c74;
-        }
-        .intro{
-            position:relative;
-            top:-1.5rem;
-        }
-        .basicInfo{
-            position:relative;
-            top:-0.5rem;
-        }
-        .recentProjects{
-            position:relative;
-            top:-0.5rem;
-            height:auto;
-        }
+
+    :global(body) {
+        margin: 0;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .notepad{
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        width: clamp(250px, 80vw, 1500px);
+        height: clamp(400px, 75dvh, 600px);
+        background: #323437;
+        border: 1px solid #313131;
+        border-radius: 10px;
+
+    }
+
+    .window-bar{
+        height: 40px;
+        display: flex;
+        flex: 0 0 40px;
+        align-items: center;
+        padding: 0 12px;
+        background: linear-gradient(#1b1b1b, #151515);
+        backdrop-filter: blur(6px);
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-bottom: 1px solid #2a2a2a;
+    }
+
+    .dots{
+        display: flex;
+        gap: 8px;
+        align-items: center;
+    }
+
+    .dots span{
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        display: inline-block;
+    }
+
+    .red{
+        background: #ff5f57;
+    }
+
+    .yellow{
+        background: #febc2e;
+    }
+
+    .green{
+        background: #28c840;
+    }
+
+    .dots span:hover{
+        filter: brightness(1.2);
+        transform: scale(1.05);
+        cursor: pointer;
+    }
+    .toast {
+        position: fixed;
+
+        font-family: 'Space Grotesk', sans-serif;
+        letter-spacing: -0.02em;
+        top: 120px;
+        right: 20px;
+
+        padding: 12px 16px;
+        border-radius: 8px;
+
+        background: rgba(8, 9, 10, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        color: white;
+
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        font-family: 'Inter', sans-serif;
+
+        z-index: 1000;
+    }
+    .code{
+        padding-left: 10px;
+        font-size: clamp(10px, 4vw, 60px);
+        font-family: Consolas, Monaco, 'Courier New', monospace;
+        user-select: none;
+        color: #FFFF00;
+    }
+
+    .mainPageButton{
+        padding-top: 2rem;
+    }
+
+    .modernButton {
+        color: rgb(34, 34, 34);
+        font-size: 18px;
+        text-decoration: none;
+        background-color: #b6b6b6;
+        transition:background-color 0.55s;
+        border-radius: 10px;
+        padding: 10px;
+        font-family: 'Space Grotesk', sans-serif;
+        letter-spacing: -0.02em;
+    }
+
+    .modernButton:hover{
+        background-color: rgb(235, 235, 235);
+    }
+
+    footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #b6b6b6;
+        color: white;
+        text-align: center;
+        padding: 0.5rem;
+    }
+
+    .footerText {
+        color: black;
+        font-family: 'Space Grotesk', sans-serif;
+        letter-spacing: -0.02em;
+        font-size: 13px;
+    }
+    .socialLink{
+        font-family: 'Space Grotesk', sans-serif;
+        letter-spacing: -0.02em;
+        color: black;
+        font-size: 13px;
+        transition:color 0.55s;
+        margin-right: 10px;
+    }
+    .socialLink:hover{
+        color: gray;
     }
 </style>
-<header>
-    <h1>Adam Ho</h1>
-    <div class = "nav-link-wrapper">
-        <h2 class = "activeLink">Home</h2>
-        <a href="/about" class="nav-link activeLink">About Me</a>
-        <a href="/projects" class="nav-link">Projects</a>
-    </div>
-    <div class = "nav-icons-wrapper">
-        <a href="https://www.instagram.com/farmerakh/" class="nav-image" target="_blank">
-            <img src="/images/linkImages/instagram-white-icon.svg" alt="Instagram" style="width: 30px; height: 30px;">
-        </a>
-        <a href="https://www.linkedin.com/in/adam-ho-a65786202" class="nav-image" target="_blank">
-            <img src="\images\linkImages\linkedin-app-white-icon.svg" alt="LinkedIn" style="width: 30px; height: 30px;">   
-        </a>
-        <a href="https://github.com/adamakh01" class="nav-image" target="_blank">
-            <img src="\images\linkImages\github-mark-white.svg" alt="GitHub" style="width: 30px; height: 30px;">
-        </a>
-    </div>
-    <div class="dropdown">
-        <button class="dropbtn">&#9776</button>
-        <div class="dropdown-content">
-        <a href="/">Home</a>
-        <a href="/about">About Me</a>
-        <a href="/projects">Projects</a>
+<div class = "bodyPage">
+    <header>
+        <h1>
+            <a href = "/" class = "titleLink">I'm Adam</a>
+        </h1>
+        <div class = "nav-link-wrapper">
+            <a href="/about" class="nav-link">About Me</a>
+            <a href="/projects" class="nav-link">Projects</a>
         </div>
-    </div>
-</header>
-<main id="main-content">
-    <div class = "intro">
-        <h2 class = "introStatement">Hello! My name is Adam.</h2>
-        <p>Feel free to take a look around! :D</p>
-    </div>
-    <div class = "basicInfo">
-        <h2>My Occupation</h2>
-        <a href = "https://www.fullerton.edu/ecs/cs" class = "occupationLink" target="_blank">
-            Computer Science, B.S Undergraduate @ CSUF
-        </a>
-        <a href = "https://www.fullerton.edu/si" class = "occupationLink" target="_blank">
-            Math Supplemental Instruction Leader @ CSUF
-        </a>
-        <a href = "https://acmcsuf.com/teams#oss" class = "occupationLink" target="_blank">
-            Open Source Officer @ ACM at CSUF
-        </a>
-    </div>
-    <div class = "gallery">
-        <h2>My Gallery</h2>
-        <img class="galleryPic" src={images[slideIndex].src} alt={images[slideIndex].alt}>
-        <button class="gallery-left" on:click={() => plusDivs(-1)} style="position:fixed; left:40rem; top:50%;">&#10094;</button>
-        <button class="gallery-right" on:click={() => plusDivs(+1)} style="position:fixed; left:104.8rem; top:50%rem;">&#10095;</button>
-        <div class="gallery-caption">
-            <p class="gallery-caption-text">{ captions[slideIndex] }</p>
+    </header>
+    <main id="main-content">
+        <div class = "notepad">
+            <div class="window-bar">
+                <div class="dots">
+                    <!-- svelte-ignore a11y_click_events_have_key_events -->
+                    <!-- svelte-ignore a11y_no_static_element_interactions -->
+                    <span class="red" onclick={setList(1)}></span>
+                    <!-- svelte-ignore a11y_click_events_have_key_events -->
+                    <!-- svelte-ignore a11y_no_static_element_interactions -->
+                    <span class="yellow" onclick={setList(2)}></span>
+                    <!-- svelte-ignore a11y_click_events_have_key_events -->
+                    <!-- svelte-ignore a11y_no_static_element_interactions -->
+                    <span class="green" onclick={setList(3)}></span>
+                </div>
+            </div>
+
+            <p class = "code">{text}<span class = "auto-type"></span></p>
         </div>
-    </div>
-    <div class = "recentProjects">
-        <h2>My Recent Project</h2>
-        <a href = "https://github.com/adamakh01/very-cool-website" class = "nav-link" target="_blank">
-            Adam Ho's Portfolio
-        </a>
-         <img src = "/images/projectImages/AdamHoPortfolio.png" alt = "Adam Ho's Portfolio" class = "projectPic" style = "position:relative; top:6%; width: 60%; height: auto; margin-bottom:2rem;">
-        <p class = "description" style="margin:0rem;">
-            Portfolio website showcasing my projects and skills, as well as present my contact info. Built with Sveltekit (HTML, CSS, and JavaScript).
-        </p>
-    </div>
-    <div class = "nav-icons-wrapper-mobile">
-        <a href="https://www.instagram.com/farmerakh/" class="nav-image" target="_blank">
-            <img src="/images/linkImages/instagram-white-icon.svg" alt="Instagram" style="width: 30px; height: 30px;">
-        </a>
-        <a href="https://www.linkedin.com/in/adam-ho-a65786202" class="nav-image" target="_blank">
-            <img src="\images\linkImages\linkedin-app-white-icon.svg" alt="LinkedIn" style="width: 30px; height: 30px;">   
-        </a>
-        <a href="https://github.com/adamakh01" class="nav-image" target="_blank">
-            <img src="\images\linkImages\github-mark-white.svg" alt="GitHub" style="width: 30px; height: 30px;">
-        </a>
-    </div>
-</main>
+        {#if message}
+            {#key toastId}
+                <div class="toast" in:fly={{ x: 20, duration: 200 }} out:fade={{ duration: 200 }}>
+                    {message}
+                </div>
+            {/key}
+        {/if}
+        <script src = "https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+        <script>
+            var typed = new Typed(".auto-type", {
+                strings: ["Adam Ho<br>> Aspiring SWE<br>> Math Supplemental Instruction Leader @CSUF"],
+                typeSpeed: 20,
+                loop: false
+            });
+        </script>
+        <div class = "mainPageButton">
+            <a href={randomHref} onclick={updateRandomPage} class = "modernButton">Explore Me!</a>
+            <a href= "/v1" class = "modernButton">v1</a>
+        </div>
+
+    </main>
+    <footer>
+        <p class = "footerText">© 2026 FarmerAKH - Made with ✨</p>
+        <div class = "social-wrapper">
+            <a href="https://www.linkedin.com/in/adam-ho-a65786202" class="socialLink" target="_blank">
+                LinkedIn
+            </a>
+            <a href="https://github.com/FarmerAKH" class="socialLink" target="_blank">
+                GitHub
+            </a>
+        </div>
+    </footer>
+</div>
