@@ -320,11 +320,12 @@
         </script>
         <div class = "mainPageButton">
             <a href={randomHref} onclick={updateRandomPage} class = "modernButton">Explore Me!</a>
+            <a href= "/v1" class = "modernButton">v1</a>
         </div>
 
     </main>
     <footer>
-        <p class = "footerText">© 2026 FarmerAKH - Made with AWESOMENESS</p>
+        <p class = "footerText">© 2026 FarmerAKH - Made with ✨</p>
         <div class = "social-wrapper">
             <a href="https://www.linkedin.com/in/adam-ho-a65786202" class="socialLink" target="_blank">
                 LinkedIn
