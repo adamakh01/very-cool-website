@@ -125,9 +125,8 @@
         align-items: center;
         background: linear-gradient(to bottom, #000000 95%, #b6b6b6 100%);
         color: #F6F6F6;
-
         width: 100%;
-        overflow: hidden; /* 👈 change from auto to hidden */
+        overflow: hidden;
         box-sizing: border-box;
         padding-bottom: 3rem;
     }
@@ -139,7 +138,6 @@
     :global(body) {
         margin: 0;
         overflow-x: hidden;
-        /* let the body scroll vertically if needed */
         overflow-y: auto;
     }
 
@@ -225,6 +223,7 @@
         padding-left: 10px;
         font-size: clamp(10px, 4vw, 60px);
         font-family: Consolas, Monaco, 'Courier New', monospace;
+        user-select: none;
         color: #FFFF00;
     }
 

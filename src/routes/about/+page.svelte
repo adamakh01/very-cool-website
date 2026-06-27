@@ -83,12 +83,10 @@
         align-items: center;
         background: linear-gradient(to bottom, #000000 95%, #b6b6b6 100%);
         color: #F6F6F6;
-
         width: 100%;
-        overflow: hidden; /* 👈 change from auto to hidden */
+        overflow: hidden;
         box-sizing: border-box;
         padding-bottom: 3rem;
-        /* Animation */
         opacity: 0;
         transform: translateY(30px);
         animation: fadeInUp 0.6s ease-out forwards;
