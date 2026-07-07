@@ -17,6 +17,26 @@
 	}
     let text = "> ";
     import { fade, fly } from 'svelte/transition';
+    import { onMount } from 'svelte';
+
+    onMount(() => {
+        function initTyped() {
+            new Typed('.auto-type', {
+                strings: ["Adam Ho<br>> Aspiring SWE<br>> Math Supplemental Instruction Leader @CSUF"],
+                typeSpeed: 20,
+                loop: false
+            });
+        }
+
+        if (window.Typed) {
+            initTyped();
+        } else {
+            const script = document.createElement('script');
+            script.src = 'https://cdn.jsdelivr.net/npm/typed.js@2.0.12';
+            script.onload = initTyped;
+            document.body.appendChild(script);
+        }
+    });
 
     let message = '';
     let toastId = 0;
@@ -310,14 +330,6 @@
                 </div>
             {/key}
         {/if}
-        <script src = "https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-        <script>
-            var typed = new Typed(".auto-type", {
-                strings: ["Adam Ho<br>> Aspiring SWE<br>> Math Supplemental Instruction Leader @CSUF"],
-                typeSpeed: 20,
-                loop: false
-            });
-        </script>
         <div class = "mainPageButton">
             <a href={randomHref} onclick={updateRandomPage} class = "modernButton">Explore Me!</a>
             <a href= "/v1" class = "modernButton">v1</a>
