@@ -245,7 +245,11 @@
                             <p class = "techStackText" style = "background-color: black; border: 1.5px solid gray; padding: 2.5px; text-align: center; font-family: 'Space Grotesk', sans-serif; font-size: 13px; border-radius: 5px">{tech}</p>
                         {/each}
                     </div>
-                    <a href={item.githubLink} onclick={item} class = "modernButton" style = "margin-right:4%;">{item.githubLink.length === 0 ? 'GitHub not available.' : 'GitHub Repo'}</a>
+                    {#if item.githubLink.length === 0}
+                        <div class = "modernButton">GitHub not available.</div>
+                    {:else}
+                        <a href={item.githubLink} onclick={item} class = "modernButton" style = "margin-right:4%;">GitHub Repo</a>
+                    {/if}
                 </div>
             {/each}
         </div>
