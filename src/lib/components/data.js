@@ -86,7 +86,7 @@ export const projects = [
     },
     {
         title: "HappyChild for Autism",
-        techStack: ["Python", "TKinter"],
+        techStack: ["Python", "TKinter", "Justinmiind"],
         description: "Senior project presented @ Liberty High School, Hillsboro OR that aims to combine the features of Proloque2Go, Birdhouse for Autism, and Social Story Creater and Library, to have a more unified app for communication, learning, and management.",
         githubLink: "",
     },
