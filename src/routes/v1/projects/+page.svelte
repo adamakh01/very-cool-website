@@ -253,7 +253,7 @@
         <a href="https://www.linkedin.com/in/adam-ho-a65786202" class="nav-image" target="_blank">
             <img src="\images\linkImages\linkedin-app-white-icon.svg" alt="LinkedIn" style="width: 30px; height: 30px;">   
         </a>
-        <a href="https://github.com/FarmerAKH" class="nav-image" target="_blank">
+        <a href="https://github.com/adamakh01" class="nav-image" target="_blank">
             <img src="\images\linkImages\github-mark-white.svg" alt="GitHub" style="width: 30px; height: 30px;">
         </a>
     </div>
