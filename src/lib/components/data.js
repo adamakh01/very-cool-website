@@ -73,6 +73,12 @@ export const detailedAbout = {
 //projects
 export const projects = [
     {
+        title: "Math Tic-Tac-Toe",
+        techStack: ["React", "CSS", "HTML", "Firebase", "Figma"],
+        description: "A Kahoot!-style, real-time math review game for Supplemental Instruction (SI) sessions. An SI leader creates a Tic-Tac-Toe board of math problems and hosts a live session; students join from their own devices, which act as buzzers, and race to answer problems to claim squares.",
+        githubLink: "",
+    },
+    {
         title: "Stay Consistent",
         techStack: ["Dart", "Flutter", "Figma", "Firebase", "iOS", "Android", "Android Studio"],
         description: "An app that allows the user to create one or more goals, and the app keeps track of progress and reminds you to do your dailies.",
