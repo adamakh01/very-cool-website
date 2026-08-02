@@ -1,38 +1,60 @@
-# sv
+# Hi, I'm Adam 👋
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+This is the source for my personal portfolio site — a place to show off what I'm building, what I'm learning, and a bit about who I am outside of code.
 
-## Creating a project
+I'm a Computer Science major, currently a junior at Cal State Fullerton (CSUF), an aspiring Software Engineer, and a Math Supplemental Instruction Leader on campus.
 
-If you're seeing this, you've probably already done this step. Congrats!
+- 🔗 [LinkedIn](https://www.linkedin.com/in/adam-ho-a65786202)
+- 💻 [GitHub](https://github.com/adamakh01)
+- 📸 [Instagram](https://www.instagram.com/farmerakh/)
+
+## About me
+
+- I'm currently learning Flutter and want to get more into backend development.
+- I've been a Supplemental Instruction leader for Business Calculus and Calc II for two semesters, and I'm an incoming University Learning Center Tutor at CSUF.
+- I was an Open Source ACM board member and project lead for Open Source Stats, and now I'm the Open Source Officer for ACM @ CSUF.
+- Originally from Oregon, I love freeways enough to study them instead of using a GPS.
+- Outside of school, you'll find me gaming (VALORANT, Marvel Rivals, Fortnite, Minecraft, and the occasional round of Umamusume: Pretty Derby), binging TV, or watching a good K-drama or anime — I'm a sucker for romance.
+
+## What I used to build this
+
+This site is built with [SvelteKit](https://svelte.dev/docs/kit) and deployed on [Vercel](https://vercel.com/).
+
+- **Framework:** SvelteKit 2 + Svelte 5
+- **Build tool:** Vite 7
+- **Deployment:** Vercel (`@sveltejs/adapter-vercel`)
+- **Effects:** [Typed.js](https://github.com/mattboldt/typed.js/) for the typing animation on the landing page
+- **CI/CD:** GitHub Actions for build checks, and Dependabot with auto-merge to keep dependencies patched and secure
+
+The site includes a home page, an about page, a projects page, and a legacy `v1` version of the site kept around for posterity.
+
+## My tech stack
+
+VS Code, Android Studio, Java, Python, C++, HTML, CSS, JavaScript, Svelte, Dart, and Firebase.
+
+## Some things I've built
+
+| Project | Stack | About |
+| --- | --- | --- |
+| Math Tic-Tac-Toe | React, CSS, HTML, Firebase, Figma | A Kahoot!-style, real-time math review game for SI sessions — an SI leader builds a Tic-Tac-Toe board of math problems and hosts a live session while students join from their own devices to race and claim squares. |
+| Stay Consistent | Dart, Flutter, Figma, Firebase, iOS, Android | An app for creating and tracking one or more goals, with daily reminders to keep you consistent. |
+| [OSS-Stats](https://github.com/acmcsufoss/oss-stats) | Python, CLI, GitHub API | A CLI tool that pulls stats — commits, issues, PRs, stars — from the acmcsufoss GitHub org and its repos. |
+| HappyChild for Autism | Python, TKinter, Justinmind | A senior project presented at Liberty High School (Hillsboro, OR) combining ideas from Proloquo2Go, Birdhouse for Autism, and Social Story Creator into one unified communication and learning app. |
+| [Grade Calculator](https://github.com/FarmerAKH/Grade-Calculator) | HTML, CSS, JavaScript | An AP CS Principles performance task where users add assignments and weights to calculate a final grade, with full edit/delete support. |
+
+More detail on each of these lives on the projects page of the live site.
+
+## Running this locally
 
 ```bash
-# create a new project in the current directory
-npx sv create
-
-# create a new project in my-app
-npx sv create my-app
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
+npm install
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
-
-To create a production version of your app:
+Build for production with:
 
 ```bash
 npm run build
 ```
 
 You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
