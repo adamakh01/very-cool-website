@@ -8,14 +8,6 @@ I'm a Computer Science major, currently a junior at Cal State Fullerton (CSUF), 
 - 💻 [GitHub](https://github.com/adamakh01)
 - 📸 [Instagram](https://www.instagram.com/farmerakh/)
 
-## About me
-
-- I'm currently learning Flutter and want to get more into backend development.
-- I've been a Supplemental Instruction leader for Business Calculus and Calc II for two semesters, and I'm an incoming University Learning Center Tutor at CSUF.
-- I was an Open Source ACM board member and project lead for Open Source Stats, and now I'm the Open Source Officer for ACM @ CSUF.
-- Originally from Oregon, I love freeways enough to study them instead of using a GPS.
-- Outside of school, you'll find me gaming (VALORANT, Marvel Rivals, Fortnite, Minecraft, and the occasional round of Umamusume: Pretty Derby), binging TV, or watching a good K-drama or anime — I'm a sucker for romance.
-
 ## What I used to build this
 
 This site is built with [SvelteKit](https://svelte.dev/docs/kit) and deployed on [Vercel](https://vercel.com/).
