@@ -15,16 +15,23 @@
 		const randomIndex = Math.floor(Math.random() * alternativePages.length);
 		randomHref = alternativePages[randomIndex];
 	}
-    let text = "> ";
     import { fade, fly } from 'svelte/transition';
     import { onMount } from 'svelte';
+
+    // Files "listed" by the terminal's ls command
+    const lsFiles = ['Aspiring_SWE', 'Math_SI_Leader'];
+    let showOutput = false;
 
     onMount(() => {
         function initTyped() {
             new Typed('.auto-type', {
-                strings: ["Adam Ho<br>> Aspiring SWE<br>> Math Supplemental Instruction Leader @CSUF"],
-                typeSpeed: 20,
-                loop: false
+                strings: ["ls Adam-Ho"],
+                typeSpeed: 70,
+                showCursor: false,
+                loop: false,
+                onComplete: () => {
+                    showOutput = true;
+                }
             });
         }
 
@@ -165,15 +172,17 @@
         position: relative;
         display: flex;
         flex-direction: column;
-        width: clamp(250px, 80vw, 1500px);
-        height: clamp(400px, 75dvh, 600px);
-        background: #323437;
+        width: min(460px, 90vw);
+        height: 580px;
+        background: #16181a;
         border: 1px solid #313131;
         border-radius: 10px;
-
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+        overflow: hidden;
     }
 
     .window-bar{
+        position: relative;
         height: 40px;
         display: flex;
         flex: 0 0 40px;
@@ -184,6 +193,84 @@
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
         border-bottom: 1px solid #2a2a2a;
+    }
+
+    .window-title{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        font-family: Consolas, Monaco, 'Courier New', monospace;
+        font-size: 13px;
+        color: #8a8f94;
+        user-select: none;
+        transition: color 0.55s;
+    }
+
+    .window-title:hover{
+        color: #ffffff;
+    }
+
+    .terminal-body{
+        flex: 1;
+        padding: 14px 16px;
+        overflow-y: auto;
+        font-family: Consolas, Monaco, 'Courier New', monospace;
+        font-size: 15px;
+        line-height: 1.6;
+        color: #e6e6e6;
+        text-align: left;
+        user-select: none;
+        -webkit-user-select: none;
+    }
+
+    .terminal-body .line{
+        margin: 0;
+        word-break: break-word;
+    }
+
+    .prompt-user{
+        color: #4ade80;
+        font-weight: bold;
+    }
+
+    .prompt-path{
+        color: #60a5fa;
+        font-weight: bold;
+    }
+
+    .prompt-sep{
+        color: #e6e6e6;
+    }
+
+    .command{
+        color: #e6e6e6;
+    }
+
+    .cursor{
+        display: inline-block;
+        width: 9px;
+        height: 1em;
+        margin-left: 2px;
+        vertical-align: text-bottom;
+        background: #e6e6e6;
+        animation: blink 1s steps(1) infinite;
+    }
+
+    @keyframes blink{
+        50% { opacity: 0; }
+    }
+
+    .ls-output{
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 4px 20px;
+        margin: 2px 0 6px;
+    }
+
+    .ls-entry{
+        color: #60a5fa;
+        font-weight: bold;
     }
 
     .dots{
@@ -216,47 +303,24 @@
         transform: scale(1.05);
         cursor: pointer;
     }
-    .toast {
-        position: fixed;
-
-        font-family: 'Space Grotesk', sans-serif;
-        letter-spacing: -0.02em;
-        top: 120px;
-        right: 20px;
-
-        padding: 12px 16px;
-        border-radius: 8px;
-
-        background: rgba(8, 9, 10, 0.7);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-
-        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-        color: white;
-
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        font-family: 'Inter', sans-serif;
-
-        z-index: 1000;
-    }
-    .code{
-        padding-left: 10px;
-        font-size: clamp(10px, 4vw, 60px);
-        font-family: Consolas, Monaco, 'Courier New', monospace;
-        user-select: none;
-        color: #FFFF00;
-    }
 
     .mainPageButton{
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
         padding-top: 2rem;
     }
 
     .modernButton {
+        position: static;
+        left: auto;
+        display: inline-flex;
+        align-items: center;
         color: rgb(34, 34, 34);
         font-size: 18px;
         text-decoration: none;
         background-color: #b6b6b6;
-        transition:background-color 0.55s;
+        transition: background-color 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
         border-radius: 10px;
         padding: 10px;
         font-family: 'Space Grotesk', sans-serif;
@@ -265,6 +329,14 @@
 
     .modernButton:hover{
         background-color: rgb(235, 235, 235);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+    }
+
+    .modernButton:active{
+        transform: translateY(0);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        transition-duration: 0.1s;
     }
 
     footer {
@@ -294,6 +366,68 @@
     .socialLink:hover{
         color: gray;
     }
+
+    .introGrid{
+        margin-top: 10px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        height: 580px;
+    }
+
+    .introductions{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.75rem;
+        padding: 0 2rem;
+        font-family: 'Space Grotesk', sans-serif;
+        letter-spacing: -0.02em;
+        text-align: left;
+    }
+
+    .introTitle{
+        margin: 0;
+        font-size: clamp(2.5rem, 5vw, 4.5rem);
+        font-weight: bold;
+        line-height: 1.05;
+        letter-spacing: -0.03em;
+        color: #ffffff;
+    }
+
+    .introSubtitle{
+        margin: 0;
+        font-size: clamp(1.1rem, 2vw, 1.6rem);
+        font-weight: 400;
+        color: #b6b6b6;
+    }
+
+    .introSummary{
+        margin: 0.5rem 0 0;
+        max-width: 42ch;
+        font-size: clamp(0.95rem, 1.1vw, 1.05rem);
+        line-height: 1.65;
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    @media (max-width: 979px){
+        .introGrid{
+            grid-template-columns: 1fr;
+            height: auto;
+            gap: 2rem;
+            justify-items: center;
+            margin-bottom: 20px;
+        }
+
+        .introductions{
+            padding: 0 1.5rem;
+            text-align: center;
+            align-items: center;
+        }
+
+        .mainPageButton{
+            justify-content: center;
+        }
+    }
 </style>
 <div class = "bodyPage">
     <header>
@@ -306,34 +440,47 @@
         </div>
     </header>
     <main id="main-content">
-        <div class = "notepad">
-            <div class="window-bar">
-                <div class="dots">
-                    <!-- svelte-ignore a11y_click_events_have_key_events -->
-                    <!-- svelte-ignore a11y_no_static_element_interactions -->
-                    <span class="red" onclick={() => setList(1)}></span>
-                    <!-- svelte-ignore a11y_click_events_have_key_events -->
-                    <!-- svelte-ignore a11y_no_static_element_interactions -->
-                    <span class="yellow" onclick={() => setList(2)}></span>
-                    <!-- svelte-ignore a11y_click_events_have_key_events -->
-                    <!-- svelte-ignore a11y_no_static_element_interactions -->
-                    <span class="green" onclick={() => setList(3)}></span>
+        <div class = "introGrid">
+            <div class = "notepad">
+                <div class="window-bar">
+                    <div class="dots">
+                        <span class="red"></span>
+                        <span class="yellow"></span>
+                        <span class="green"></span>
+                    </div>
+                    <span class="window-title">adam@portfolio: ~</span>
+                </div>
+
+                <div class="terminal-body">
+                    <p class="line">
+                        <span class="prompt-user">adam@portfolio</span><span class="prompt-sep">:</span><span class="prompt-path">~</span><span class="prompt-sep">$</span>
+                        <span class="command auto-type"></span>{#if !showOutput}<span class="cursor"></span>{/if}
+                    </p>
+
+                    {#if showOutput}
+                        <div class="ls-output" in:fade={{ duration: 150 }}>
+                            {#each lsFiles as file}
+                                <span class="ls-entry">{file}</span>
+                            {/each}
+                        </div>
+                        <p class="line" in:fade={{ duration: 150 }}>
+                            <span class="prompt-user">adam@portfolio</span><span class="prompt-sep">:</span><span class="prompt-path">~</span><span class="prompt-sep">$</span>
+                            <span class="cursor"></span>
+                        </p>
+                    {/if}
                 </div>
             </div>
-
-            <p class = "code">{text}<span class = "auto-type"></span></p>
-        </div>
-        {#if message}
-            {#key toastId}
-                <div class="toast" in:fly={{ x: 20, duration: 200 }} out:fade={{ duration: 200 }}>
-                    {message}
+            <div class = "introductions">
+                <p class = "introTitle">I'm Adam</p>
+                <p class = "introSubtitle">Welcome to my portfolio!</p>
+                <p class = "introSummary">I am an aspiring full stack engineer who loves to learn new technologies through AI tools and projects! Based in Fullerton, CA.</p>
+                <div class = "mainPageButton">
+                    <a href={randomHref} onclick={updateRandomPage} class = "modernButton">Explore Me!</a>
+                    <a href= "/v1" class = "modernButton">v1</a>
                 </div>
-            {/key}
-        {/if}
-        <div class = "mainPageButton">
-            <a href={randomHref} onclick={updateRandomPage} class = "modernButton">Explore Me!</a>
-            <a href= "/v1" class = "modernButton">v1</a>
+            </div>
         </div>
+
 
     </main>
     <footer>
