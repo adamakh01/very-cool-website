@@ -149,6 +149,7 @@
         margin-top: 8rem;
         display: flex;
         flex-direction: column;
+        justify-content: center;
         align-items: center;
         background: linear-gradient(to bottom, #000000 95%, #b6b6b6 100%);
         color: #F6F6F6;
@@ -368,7 +369,6 @@
     }
 
     .introGrid{
-        margin-top: 10px;
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         height: 580px;
